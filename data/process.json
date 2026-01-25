@@ -1,0 +1,89 @@
+[
+  {
+    "number": 1,
+    "title": "Discovery & Planning",
+    "description": "We start by understanding your business goals, target audience, and project requirements. I conduct thorough research and create a detailed project plan with clear milestones and deliverables.",
+    "duration": "3-5 days",
+    "deliverables": [
+      "Project requirements document",
+      "Technical specification",
+      "Project timeline and milestones",
+      "Cost estimate and proposal"
+    ],
+    "icon": "search"
+  },
+  {
+    "number": 2,
+    "title": "Design & Architecture",
+    "description": "I design the system architecture, database schema, and user interface mockups. This phase ensures we have a solid foundation before writing any code.",
+    "duration": "5-7 days",
+    "deliverables": [
+      "System architecture diagram",
+      "Database schema design",
+      "UI/UX wireframes and mockups",
+      "API endpoint specifications",
+      "Technology stack finalization"
+    ],
+    "icon": "pen-tool"
+  },
+  {
+    "number": 3,
+    "title": "Development",
+    "description": "This is where the magic happens. I build your application following best practices, writing clean and maintainable code. Regular updates keep you informed of progress.",
+    "duration": "2-6 weeks",
+    "deliverables": [
+      "Functional application code",
+      "Database implementation",
+      "API endpoints",
+      "Frontend components",
+      "Integration with third-party services",
+      "Weekly progress updates"
+    ],
+    "icon": "code"
+  },
+  {
+    "number": 4,
+    "title": "Testing & Quality Assurance",
+    "description": "Comprehensive testing ensures your application works flawlessly. I perform unit testing, integration testing, and user acceptance testing to catch and fix any issues.",
+    "duration": "3-5 days",
+    "deliverables": [
+      "Test cases and results",
+      "Bug fixes and optimizations",
+      "Performance testing report",
+      "Security audit",
+      "Cross-browser testing",
+      "Mobile responsiveness verification"
+    ],
+    "icon": "check-circle"
+  },
+  {
+    "number": 5,
+    "title": "Deployment & Launch",
+    "description": "I deploy your application to production servers, configure domains, and ensure everything runs smoothly. Post-launch monitoring ensures stability.",
+    "duration": "2-3 days",
+    "deliverables": [
+      "Production deployment",
+      "Domain and SSL configuration",
+      "Environment setup",
+      "Deployment documentation",
+      "Monitoring and analytics setup",
+      "Launch checklist completion"
+    ],
+    "icon": "rocket"
+  },
+  {
+    "number": 6,
+    "title": "Support & Maintenance",
+    "description": "After launch, I provide ongoing support to address any issues and implement updates. I'm here to ensure your application continues to perform optimally.",
+    "duration": "Ongoing",
+    "deliverables": [
+      "Bug fixes and patches",
+      "Feature updates",
+      "Performance monitoring",
+      "Security updates",
+      "Technical support",
+      "Monthly maintenance reports"
+    ],
+    "icon": "tool"
+  }
+]

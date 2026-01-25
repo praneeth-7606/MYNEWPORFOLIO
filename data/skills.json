@@ -1,0 +1,226 @@
+[
+  {
+    "name": "React.js",
+    "category": "frontend",
+    "proficiency": 95,
+    "yearsOfExperience": 3,
+    "projectCount": 15,
+    "icon": "react"
+  },
+  {
+    "name": "Next.js",
+    "category": "frontend",
+    "proficiency": 90,
+    "yearsOfExperience": 2,
+    "projectCount": 8,
+    "icon": "nextjs"
+  },
+  {
+    "name": "TypeScript",
+    "category": "frontend",
+    "proficiency": 85,
+    "yearsOfExperience": 2,
+    "projectCount": 10,
+    "icon": "typescript"
+  },
+  {
+    "name": "JavaScript",
+    "category": "frontend",
+    "proficiency": 95,
+    "yearsOfExperience": 3,
+    "projectCount": 20,
+    "icon": "javascript"
+  },
+  {
+    "name": "HTML",
+    "category": "frontend",
+    "proficiency": 95,
+    "yearsOfExperience": 4,
+    "projectCount": 25,
+    "icon": "html"
+  },
+  {
+    "name": "CSS",
+    "category": "frontend",
+    "proficiency": 90,
+    "yearsOfExperience": 4,
+    "projectCount": 25,
+    "icon": "css"
+  },
+  {
+    "name": "Tailwind CSS",
+    "category": "frontend",
+    "proficiency": 90,
+    "yearsOfExperience": 2,
+    "projectCount": 12,
+    "icon": "tailwind"
+  },
+  {
+    "name": "Material-UI",
+    "category": "frontend",
+    "proficiency": 85,
+    "yearsOfExperience": 2,
+    "projectCount": 8,
+    "icon": "materialui"
+  },
+  {
+    "name": "Bootstrap",
+    "category": "frontend",
+    "proficiency": 85,
+    "yearsOfExperience": 3,
+    "projectCount": 10,
+    "icon": "bootstrap"
+  },
+  {
+    "name": "Node.js",
+    "category": "backend",
+    "proficiency": 90,
+    "yearsOfExperience": 3,
+    "projectCount": 15,
+    "icon": "nodejs"
+  },
+  {
+    "name": "Express.js",
+    "category": "backend",
+    "proficiency": 90,
+    "yearsOfExperience": 3,
+    "projectCount": 12,
+    "icon": "express"
+  },
+  {
+    "name": "FastAPI",
+    "category": "backend",
+    "proficiency": 85,
+    "yearsOfExperience": 1,
+    "projectCount": 5,
+    "icon": "fastapi"
+  },
+  {
+    "name": "Python",
+    "category": "backend",
+    "proficiency": 85,
+    "yearsOfExperience": 2,
+    "projectCount": 10,
+    "icon": "python"
+  },
+  {
+    "name": "MongoDB",
+    "category": "database",
+    "proficiency": 90,
+    "yearsOfExperience": 3,
+    "projectCount": 12,
+    "icon": "mongodb"
+  },
+  {
+    "name": "MySQL",
+    "category": "database",
+    "proficiency": 80,
+    "yearsOfExperience": 2,
+    "projectCount": 6,
+    "icon": "mysql"
+  },
+  {
+    "name": "PostgreSQL",
+    "category": "database",
+    "proficiency": 75,
+    "yearsOfExperience": 1,
+    "projectCount": 4,
+    "icon": "postgresql"
+  },
+  {
+    "name": "Firebase",
+    "category": "database",
+    "proficiency": 85,
+    "yearsOfExperience": 2,
+    "projectCount": 8,
+    "icon": "firebase"
+  },
+  {
+    "name": "Mistral AI",
+    "category": "ai-ml",
+    "proficiency": 85,
+    "yearsOfExperience": 1,
+    "projectCount": 3,
+    "icon": "ai"
+  },
+  {
+    "name": "LangChain",
+    "category": "ai-ml",
+    "proficiency": 80,
+    "yearsOfExperience": 1,
+    "projectCount": 3,
+    "icon": "langchain"
+  },
+  {
+    "name": "FAISS",
+    "category": "ai-ml",
+    "proficiency": 75,
+    "yearsOfExperience": 1,
+    "projectCount": 2,
+    "icon": "database"
+  },
+  {
+    "name": "OpenAI API",
+    "category": "ai-ml",
+    "proficiency": 80,
+    "yearsOfExperience": 1,
+    "projectCount": 2,
+    "icon": "openai"
+  },
+  {
+    "name": "Git",
+    "category": "tools",
+    "proficiency": 90,
+    "yearsOfExperience": 3,
+    "projectCount": 25,
+    "icon": "git"
+  },
+  {
+    "name": "GitHub",
+    "category": "tools",
+    "proficiency": 90,
+    "yearsOfExperience": 3,
+    "projectCount": 25,
+    "icon": "github"
+  },
+  {
+    "name": "VS Code",
+    "category": "tools",
+    "proficiency": 95,
+    "yearsOfExperience": 4,
+    "projectCount": 30,
+    "icon": "vscode"
+  },
+  {
+    "name": "Postman",
+    "category": "tools",
+    "proficiency": 85,
+    "yearsOfExperience": 2,
+    "projectCount": 15,
+    "icon": "postman"
+  },
+  {
+    "name": "Docker",
+    "category": "devops",
+    "proficiency": 70,
+    "yearsOfExperience": 1,
+    "projectCount": 3,
+    "icon": "docker"
+  },
+  {
+    "name": "Vercel",
+    "category": "devops",
+    "proficiency": 85,
+    "yearsOfExperience": 2,
+    "projectCount": 10,
+    "icon": "vercel"
+  },
+  {
+    "name": "AWS",
+    "category": "devops",
+    "proficiency": 65,
+    "yearsOfExperience": 1,
+    "projectCount": 2,
+    "icon": "aws"
+  }
+]

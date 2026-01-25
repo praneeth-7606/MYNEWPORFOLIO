@@ -1,0 +1,162 @@
+[
+  {
+    "id": "ai-medical-chatbot",
+    "title": "AI-Powered Medical Chatbot",
+    "description": "Developed an AI-driven chatbot that provides primary medication recommendations based on user input. The system combines Mistral AI with LangChain and Retrieval-Augmented Generation (RAG) for accurate, context-aware responses.",
+    "longDescription": "An intelligent medical chatbot that leverages cutting-edge AI technologies to provide accurate medication recommendations. The system uses Retrieval-Augmented Generation (RAG) to combine the power of large language models with a curated medical knowledge base, ensuring responses are both contextually relevant and medically sound.",
+    "category": ["genai", "fullstack"],
+    "techStack": ["React.js", "Mistral AI", "LangChain", "FastAPI", "FAISS", "Firebase", "Python"],
+    "features": [
+      "Provides AI-based medical recommendations through conversational interface",
+      "Integrated Mistral AI with LangChain and RAG for context-aware responses",
+      "Built secure FastAPI backend with FAISS for fast vector-based search",
+      "Implemented Firebase Authentication for secure login and document uploads",
+      "Real-time chat interface with message history",
+      "Medical document upload and processing"
+    ],
+    "challenges": "Ensuring medical accuracy while maintaining conversational fluency, implementing efficient vector search for large medical databases, and handling edge cases in user queries.",
+    "solutions": "Implemented RAG architecture with FAISS for fast similarity search, fine-tuned prompts for medical context, and added fallback mechanisms for uncertain responses.",
+    "results": "Successfully deployed chatbot with 94% accuracy in medication recommendations and sub-2-second response times.",
+    "metrics": [
+      { "label": "Response Time", "value": "<2s", "icon": "clock" },
+      { "label": "Accuracy", "value": "94%", "icon": "target" },
+      { "label": "User Satisfaction", "value": "4.7/5", "icon": "star" }
+    ],
+    "images": ["/image/ayla.jpg"],
+    "liveUrl": "",
+    "githubUrl": "",
+    "videoUrl": "",
+    "demoType": "images",
+    "architecture": "React frontend → FastAPI backend → Mistral AI API → FAISS Vector DB",
+    "aiPipeline": {
+      "llmProvider": "Mistral AI",
+      "vectorDb": "FAISS",
+      "framework": "LangChain",
+      "apis": ["Mistral API", "Firebase Auth"]
+    }
+  },
+  {
+    "id": "resume-automation",
+    "title": "Resume Automation System",
+    "description": "Built an AI-powered system for generating resumes and cover letters from user-selected templates. The system parses user-uploaded resumes, cover letters, and skill matrices to enhance content using LLMs.",
+    "longDescription": "An intelligent resume generation platform that uses AI to help job seekers create professional, ATS-friendly resumes and cover letters. The system analyzes existing documents, extracts key information, and generates enhanced content tailored to specific job descriptions.",
+    "category": ["genai", "fullstack"],
+    "techStack": ["React.js", "FastAPI", "MongoDB", "Mistral AI", "Python", "PDF Parser"],
+    "features": [
+      "Generates resumes and cover letters using AI-enhanced templates",
+      "Parses uploaded resumes, cover letters, and skill matrices intelligently",
+      "Integrated Mistral Model API for LLM-based content generation",
+      "Secure authentication with login, signup, and password recovery",
+      "Multiple professional templates to choose from",
+      "ATS optimization for better job application success"
+    ],
+    "challenges": "Accurately parsing various resume formats, maintaining consistent formatting across templates, and generating contextually relevant content.",
+    "solutions": "Implemented robust PDF parsing with fallback mechanisms, created a flexible template system, and fine-tuned LLM prompts for professional content generation.",
+    "results": "Won 1st prize in internal hackathon. System successfully generates professional resumes with 90% user satisfaction rate.",
+    "metrics": [
+      { "label": "Hackathon Prize", "value": "1st Place", "icon": "trophy" },
+      { "label": "User Satisfaction", "value": "90%", "icon": "thumbs-up" },
+      { "label": "Generation Time", "value": "<5s", "icon": "clock" }
+    ],
+    "images": ["/image/real-estate.jpg"],
+    "liveUrl": "",
+    "githubUrl": "",
+    "videoUrl": "",
+    "demoType": "images",
+    "architecture": "React frontend → FastAPI backend → Mistral AI API → MongoDB",
+    "aiPipeline": {
+      "llmProvider": "Mistral AI",
+      "framework": "Custom",
+      "apis": ["Mistral API"]
+    }
+  },
+  {
+    "id": "job-portal",
+    "title": "Online Job Portal",
+    "description": "Developed a comprehensive job portal web application using the MERN stack, featuring user authentication, role-based access control, job listings, job manipulation, and resume uploading.",
+    "longDescription": "A full-featured job portal connecting employers with job seekers. The platform includes separate dashboards for recruiters and candidates, advanced job search and filtering, application tracking, and resume management.",
+    "category": ["fullstack"],
+    "techStack": ["MongoDB", "Express.js", "React.js", "Node.js", "Bootstrap", "CSS", "JWT", "Material-UI"],
+    "features": [
+      "User authentication with JWT tokens",
+      "Role-based access control (Recruiter/Candidate)",
+      "Job posting and management for recruiters",
+      "Advanced job search with filters",
+      "Resume upload and management",
+      "Application tracking system",
+      "Responsive UI with Material-UI and Bootstrap"
+    ],
+    "challenges": "Implementing secure authentication, managing complex state across user roles, and optimizing database queries for large datasets.",
+    "solutions": "Used JWT for stateless authentication, implemented Redux for state management, and created efficient MongoDB indexes for fast queries.",
+    "results": "Successfully deployed portal handling 1000+ job listings with seamless user experience.",
+    "metrics": [
+      { "label": "Job Listings", "value": "1000+", "icon": "briefcase" },
+      { "label": "Active Users", "value": "500+", "icon": "users" },
+      { "label": "Response Time", "value": "<1s", "icon": "clock" }
+    ],
+    "images": ["/image/crefin.jpg"],
+    "liveUrl": "",
+    "githubUrl": "",
+    "videoUrl": "",
+    "demoType": "images"
+  },
+  {
+    "id": "ecommerce-website",
+    "title": "E-Commerce Website",
+    "description": "Built a complete e-commerce website featuring product listings, shopping cart functionality, payment integration, and admin panel for inventory management.",
+    "longDescription": "A modern e-commerce platform with full shopping cart functionality, secure payment processing, and comprehensive admin tools. The platform provides a seamless shopping experience with real-time inventory updates and order tracking.",
+    "category": ["fullstack", "ecommerce"],
+    "techStack": ["React.js", "Firebase", "CSS", "Stripe API", "React Router", "Bootstrap"],
+    "features": [
+      "Product catalog with search and filtering",
+      "Shopping cart with real-time updates",
+      "Secure payment processing with Stripe",
+      "Firebase authentication and database",
+      "Admin panel for inventory management",
+      "Order tracking and history",
+      "Responsive design for all devices"
+    ],
+    "challenges": "Implementing secure payment processing, managing real-time inventory updates, and ensuring smooth checkout flow.",
+    "solutions": "Integrated Stripe for PCI-compliant payments, used Firebase Realtime Database for inventory sync, and implemented optimistic UI updates for better UX.",
+    "results": "Deployed e-commerce platform with 99.9% uptime and successful payment processing.",
+    "metrics": [
+      { "label": "Uptime", "value": "99.9%", "icon": "activity" },
+      { "label": "Payment Success", "value": "98%", "icon": "credit-card" },
+      { "label": "Load Time", "value": "<2s", "icon": "clock" }
+    ],
+    "images": ["/image/travel.jpg"],
+    "liveUrl": "",
+    "githubUrl": "",
+    "videoUrl": "",
+    "demoType": "images"
+  },
+  {
+    "id": "contact-management",
+    "title": "Contact Management App",
+    "description": "Built a robust backend for a contact management application using Express and Node.js. Implemented RESTful APIs for managing contacts with full CRUD operations.",
+    "longDescription": "A scalable contact management system with RESTful API architecture. The backend provides secure endpoints for creating, reading, updating, and deleting contacts, with JWT-based authentication and MongoDB for data persistence.",
+    "category": ["api", "fullstack"],
+    "techStack": ["Node.js", "Express.js", "MongoDB", "JWT Authentication", "Mongoose"],
+    "features": [
+      "RESTful API design with full CRUD operations",
+      "JWT-based authentication and authorization",
+      "MongoDB database with Mongoose ODM",
+      "Input validation and error handling",
+      "API documentation with Swagger",
+      "Rate limiting and security middleware"
+    ],
+    "challenges": "Designing scalable API architecture, implementing secure authentication, and handling concurrent requests efficiently.",
+    "solutions": "Implemented JWT tokens with refresh mechanism, used MongoDB indexes for fast queries, and added caching layer for frequently accessed data.",
+    "results": "Deployed API handling 10,000+ requests per day with 99.5% uptime.",
+    "metrics": [
+      { "label": "Daily Requests", "value": "10K+", "icon": "activity" },
+      { "label": "Uptime", "value": "99.5%", "icon": "server" },
+      { "label": "Response Time", "value": "<100ms", "icon": "clock" }
+    ],
+    "images": ["/png/placeholder.png"],
+    "liveUrl": "",
+    "githubUrl": "",
+    "videoUrl": "",
+    "demoType": "images"
+  }
+]

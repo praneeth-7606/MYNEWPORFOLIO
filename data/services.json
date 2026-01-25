@@ -1,0 +1,87 @@
+[
+  {
+    "id": "fullstack-development",
+    "title": "Full-Stack Web Development",
+    "description": "End-to-end web application development using modern technologies like React, Next.js, Node.js, and MongoDB. From concept to deployment, I build scalable and performant web applications.",
+    "features": [
+      "Responsive web design for all devices",
+      "RESTful API development",
+      "Database design and optimization",
+      "Authentication and authorization",
+      "Payment gateway integration",
+      "Cloud deployment (Vercel, AWS)"
+    ],
+    "techStack": ["React.js", "Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Tailwind CSS"],
+    "startingPrice": "$2,000",
+    "estimatedDuration": "4-8 weeks",
+    "icon": "code"
+  },
+  {
+    "id": "genai-integration",
+    "title": "GenAI & LLM Integration",
+    "description": "Integrate cutting-edge AI capabilities into your applications. From chatbots to content generation, I implement LLM-powered features using Mistral AI, OpenAI, and LangChain.",
+    "features": [
+      "AI chatbot development",
+      "RAG (Retrieval-Augmented Generation) implementation",
+      "Vector database setup (FAISS, Pinecone)",
+      "LLM API integration (Mistral, OpenAI)",
+      "Custom AI pipeline development",
+      "Prompt engineering and optimization"
+    ],
+    "techStack": ["Mistral AI", "OpenAI", "LangChain", "FAISS", "Python", "FastAPI"],
+    "startingPrice": "$3,000",
+    "estimatedDuration": "3-6 weeks",
+    "icon": "brain"
+  },
+  {
+    "id": "api-development",
+    "title": "API Development & Integration",
+    "description": "Design and develop robust RESTful APIs with comprehensive documentation. I also integrate third-party APIs and services into your existing applications.",
+    "features": [
+      "RESTful API design and development",
+      "API documentation with Swagger",
+      "Third-party API integration",
+      "Authentication (JWT, OAuth)",
+      "Rate limiting and security",
+      "API testing and monitoring"
+    ],
+    "techStack": ["Node.js", "Express.js", "FastAPI", "MongoDB", "PostgreSQL", "JWT"],
+    "startingPrice": "$1,500",
+    "estimatedDuration": "2-4 weeks",
+    "icon": "server"
+  },
+  {
+    "id": "frontend-development",
+    "title": "Frontend Development",
+    "description": "Create stunning, responsive user interfaces with modern frameworks. I focus on performance, accessibility, and user experience to deliver exceptional frontend solutions.",
+    "features": [
+      "Responsive UI/UX design",
+      "Component-based architecture",
+      "State management (Redux, Context API)",
+      "Performance optimization",
+      "Accessibility (WCAG 2.1)",
+      "Cross-browser compatibility"
+    ],
+    "techStack": ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    "startingPrice": "$1,200",
+    "estimatedDuration": "2-4 weeks",
+    "icon": "layout"
+  },
+  {
+    "id": "consulting",
+    "title": "Technical Consulting",
+    "description": "Get expert advice on technology stack selection, architecture design, and best practices. I help you make informed decisions for your project's success.",
+    "features": [
+      "Technology stack recommendations",
+      "Architecture design and review",
+      "Code review and optimization",
+      "Performance auditing",
+      "Security assessment",
+      "Scalability planning"
+    ],
+    "techStack": ["Various based on project needs"],
+    "startingPrice": "$100/hour",
+    "estimatedDuration": "Flexible",
+    "icon": "lightbulb"
+  }
+]
