@@ -40,11 +40,11 @@ export default function ContactSection() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-teal-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              Let's Work Together
+              Get In Touch
             </span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Have a project in mind? Let's discuss how I can help bring your ideas to life
+            Have a question or want to collaborate? Feel free to reach out!
           </p>
         </motion.div>
 

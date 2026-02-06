@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import skillsData from '@/data/skills.json';
 import { Skill, SkillCategory } from '@/data/types';
 import { Code2, Database, Brain, Cloud, Wrench, Palette, Server, Sparkles } from 'lucide-react';
+import { skillsImage } from '@/utils/skill-image';
+import Image from 'next/image';
 
 const categories: { id: SkillCategory | 'all'; label: string; icon: any }[] = [
   { id: 'all', label: 'All Skills', icon: Sparkles },
@@ -181,11 +183,23 @@ export default function SkillsSection() {
                     <motion.div
                       whileHover={{ scale: 1.3, rotate: 360 }}
                       transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                      className="relative"
+                      className="relative w-20 h-20 flex items-center justify-center"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
-                      <div className="relative text-6xl filter drop-shadow-lg">
-                        {skill.icon}
+                      <div className="relative w-16 h-16">
+                        {skillsImage(skill.name) ? (
+                          <Image
+                            src={skillsImage(skill.name)}
+                            alt={skill.name}
+                            width={64}
+                            height={64}
+                            className="filter drop-shadow-lg"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-5xl filter drop-shadow-lg">
+                            💻
+                          </div>
+                        )}
                       </div>
                     </motion.div>
                     
@@ -240,15 +254,18 @@ export default function SkillsSection() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.8 }}
                         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                        className="absolute -top-24 left-1/2 transform -translate-x-1/2 z-30 px-5 py-3 bg-gradient-to-r from-dark-card to-dark-card/95 border border-cyan-500/50 rounded-2xl shadow-2xl shadow-cyan-500/20 backdrop-blur-xl whitespace-nowrap"
+                        className="absolute -top-28 left-1/2 transform -translate-x-1/2 z-30 px-5 py-3 bg-gradient-to-r from-dark-card to-dark-card/95 border border-cyan-500/50 rounded-2xl shadow-2xl shadow-cyan-500/20 backdrop-blur-xl whitespace-nowrap"
                       >
-                        <div className="flex items-center gap-3">
-                          <div className="flex flex-col">
+                        <div className="flex flex-col gap-2">
+                          <p className="text-sm font-bold text-white text-center border-b border-cyan-500/30 pb-2">
+                            {skill.name}
+                          </p>
+                          <div className="flex flex-col gap-1">
                             <p className="text-xs text-cyan-400 font-bold">
                               {skill.yearsOfExperience} years experience
                             </p>
                             <p className="text-xs text-emerald-400 font-bold">
-                              {skill.projectsCompleted} projects completed
+                              {skill.projectCount} projects completed
                             </p>
                           </div>
                         </div>

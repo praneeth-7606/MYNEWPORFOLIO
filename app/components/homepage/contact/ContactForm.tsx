@@ -10,7 +10,6 @@ interface FormData {
   email: string;
   phone: string;
   projectType: string[];
-  budgetRange: string;
   message: string;
 }
 
@@ -23,22 +22,12 @@ const projectTypes = [
   'Consulting',
 ];
 
-const budgetRanges = [
-  'Under $5,000',
-  '$5,000 - $10,000',
-  '$10,000 - $25,000',
-  '$25,000 - $50,000',
-  '$50,000+',
-  'Not Sure',
-];
-
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
     projectType: [],
-    budgetRange: '',
     message: '',
   });
 
@@ -98,7 +87,6 @@ export default function ContactForm() {
           email: '',
           phone: '',
           projectType: [],
-          budgetRange: '',
           message: '',
         });
       } else {
@@ -178,7 +166,7 @@ export default function ContactForm() {
         {/* Project Type */}
         <div>
           <label className="block text-sm font-medium text-gray-300 mb-3">
-            Project Type (Select all that apply)
+            How Can I Help? (Select all that apply)
           </label>
           <div className="flex flex-wrap gap-2">
             {projectTypes.map((type) => (
@@ -198,30 +186,10 @@ export default function ContactForm() {
           </div>
         </div>
 
-        {/* Budget Range */}
-        <div>
-          <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-2">
-            Budget Range
-          </label>
-          <select
-            id="budget"
-            value={formData.budgetRange}
-            onChange={(e) => setFormData({ ...formData, budgetRange: e.target.value })}
-            className="w-full px-4 py-3 bg-[#1b2c68a0] border border-[#1b2c68a0] rounded-lg text-white focus:border-[#16f2b3] focus:outline-none transition-colors"
-          >
-            <option value="">Select a budget range</option>
-            {budgetRanges.map((range) => (
-              <option key={range} value={range}>
-                {range}
-              </option>
-            ))}
-          </select>
-        </div>
-
         {/* Message */}
         <div>
           <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-            Project Details *
+            Your Message *
           </label>
           <textarea
             id="message"
@@ -231,7 +199,7 @@ export default function ContactForm() {
             className={`w-full px-4 py-3 bg-[#1b2c68a0] border ${
               errors.message ? 'border-red-500' : 'border-[#1b2c68a0]'
             } rounded-lg text-white placeholder-gray-500 focus:border-[#16f2b3] focus:outline-none transition-colors resize-none`}
-            placeholder="Tell me about your project..."
+            placeholder="Tell me how I can help you..."
           />
           {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message}</p>}
           <p className="mt-1 text-xs text-gray-500">{formData.message.length}/500 characters</p>
