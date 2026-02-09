@@ -1,0 +1,212 @@
+[
+  {
+    "id": "ecommerce-platform",
+    "title": "E-Commerce Platform",
+    "client": "Retail Startup",
+    "category": "Full-Stack Development",
+    "description": "Built a complete e-commerce platform with product management, shopping cart, payment integration, and admin dashboard.",
+    "longDescription": "Developed a full-featured e-commerce solution with Stripe payment integration, real-time inventory management, order tracking, and comprehensive admin panel. Implemented responsive design, SEO optimization, and performance enhancements for optimal user experience.",
+    "technologies": ["Next.js", "React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
+    "features": [
+      "Product catalog with search and filters",
+      "Shopping cart and checkout flow",
+      "Stripe payment integration",
+      "Order management system",
+      "Admin dashboard with analytics",
+      "Real-time inventory tracking",
+      "Email notifications",
+      "Responsive mobile design"
+    ],
+    "duration": "3 months",
+    "completedDate": "2024-11",
+    "status": "Completed",
+    "liveUrl": "https://ecommerce-demo-praneeth.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606",
+    "image": "/image/crefin.jpg",
+    "testimonial": {
+      "text": "Praneeth delivered an exceptional e-commerce platform that exceeded our expectations. Professional, timely, and highly skilled.",
+      "author": "Sarah Johnson",
+      "role": "Founder, Retail Startup"
+    },
+    "metrics": {
+      "performance": "98/100 Score",
+      "uptime": "99.9%",
+      "loadTime": "<2s"
+    }
+  },
+  {
+    "id": "job-portal-mern",
+    "title": "Job Portal Platform",
+    "client": "HR Solutions Company",
+    "category": "MERN Stack",
+    "description": "Comprehensive job portal connecting employers with job seekers, featuring advanced search, application tracking, and resume management.",
+    "longDescription": "Full-featured job portal with separate dashboards for recruiters and candidates. Implemented advanced job search with filters, application tracking system, resume upload and management, and email notifications.",
+    "technologies": ["MongoDB", "Express.js", "React", "Node.js", "JWT", "Material-UI", "Redux"],
+    "features": [
+      "User authentication with JWT",
+      "Role-based access control",
+      "Job posting and management",
+      "Advanced search with filters",
+      "Resume upload and management",
+      "Application tracking system",
+      "Email notifications",
+      "Responsive UI with Material-UI"
+    ],
+    "duration": "2 months",
+    "completedDate": "2024-09",
+    "status": "Completed",
+    "liveUrl": "https://job-portal-praneeth.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606",
+    "image": "/image/real-estate.jpg",
+    "testimonial": {
+      "text": "The job portal exceeded our requirements. Clean code, great UI, and excellent communication throughout the project.",
+      "author": "Michael Chen",
+      "role": "CTO, HR Solutions"
+    },
+    "metrics": {
+      "users": "500+ Active",
+      "jobs": "1000+ Listings",
+      "applications": "5000+ Processed"
+    }
+  },
+  {
+    "id": "restaurant-website",
+    "title": "Restaurant Website & Ordering System",
+    "client": "Local Restaurant Chain",
+    "category": "Full-Stack Development",
+    "description": "Modern restaurant website with online ordering, menu management, and reservation system.",
+    "longDescription": "Developed a comprehensive restaurant website featuring online food ordering, table reservations, menu management, and integration with payment gateways. Implemented real-time order tracking, customer reviews, and admin dashboard.",
+    "technologies": ["Next.js", "TypeScript", "PostgreSQL", "Stripe", "Tailwind CSS", "Framer Motion"],
+    "features": [
+      "Online food ordering system",
+      "Table reservation management",
+      "Dynamic menu with categories",
+      "Payment gateway integration",
+      "Real-time order tracking",
+      "Customer reviews and ratings",
+      "Admin dashboard",
+      "Mobile-responsive design"
+    ],
+    "duration": "2.5 months",
+    "completedDate": "2024-10",
+    "status": "Completed",
+    "liveUrl": "https://restaurant-praneeth.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606",
+    "image": "/image/travel.jpg",
+    "testimonial": {
+      "text": "Our online orders increased by 40% after launching this website. Praneeth's work is outstanding!",
+      "author": "David Martinez",
+      "role": "Owner, Restaurant Chain"
+    },
+    "metrics": {
+      "orders": "200+ Daily",
+      "revenue": "+40% Increase",
+      "satisfaction": "4.8/5 Rating"
+    }
+  },
+  {
+    "id": "real-estate-platform",
+    "title": "Real Estate Listing Platform",
+    "client": "Property Management Firm",
+    "category": "Full-Stack Development",
+    "description": "Property listing platform with advanced search, virtual tours, and agent management system.",
+    "longDescription": "Built a comprehensive real estate platform featuring property listings with high-quality images, virtual tour integration, advanced search filters, agent profiles, and inquiry management. Implemented map integration and mortgage calculator.",
+    "technologies": ["React", "Node.js", "MongoDB", "Google Maps API", "AWS S3", "Bootstrap"],
+    "features": [
+      "Property listings with galleries",
+      "Advanced search and filters",
+      "Google Maps integration",
+      "Virtual tour support",
+      "Agent profiles and contact",
+      "Mortgage calculator",
+      "Property comparison tool",
+      "Inquiry management system"
+    ],
+    "duration": "3 months",
+    "completedDate": "2024-08",
+    "status": "Completed",
+    "liveUrl": "https://realestate-praneeth.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606",
+    "image": "/image/ayla.jpg",
+    "testimonial": {
+      "text": "The platform transformed our business. Professional development and great attention to detail.",
+      "author": "Jennifer Williams",
+      "role": "Director, Property Management"
+    },
+    "metrics": {
+      "listings": "500+ Properties",
+      "inquiries": "1000+ Monthly",
+      "agents": "50+ Registered"
+    }
+  },
+  {
+    "id": "fitness-app",
+    "title": "Fitness Tracking Mobile App",
+    "client": "Fitness Startup",
+    "category": "Mobile Development",
+    "description": "Cross-platform fitness app with workout tracking, nutrition planning, and progress analytics.",
+    "longDescription": "Developed a comprehensive fitness tracking application with workout plans, exercise library, nutrition tracking, progress analytics, and social features. Implemented real-time sync, offline mode, and integration with wearable devices.",
+    "technologies": ["React Native", "Node.js", "MongoDB", "Firebase", "Redux", "Chart.js"],
+    "features": [
+      "Workout tracking and planning",
+      "Exercise library with videos",
+      "Nutrition and calorie tracking",
+      "Progress analytics and charts",
+      "Social features and challenges",
+      "Wearable device integration",
+      "Offline mode support",
+      "Push notifications"
+    ],
+    "duration": "4 months",
+    "completedDate": "2024-07",
+    "status": "Completed",
+    "liveUrl": "https://fitness-app-praneeth.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606",
+    "image": "/png/placeholder.png",
+    "testimonial": {
+      "text": "Praneeth built an amazing fitness app that our users love. Highly recommended!",
+      "author": "Alex Thompson",
+      "role": "CEO, Fitness Startup"
+    },
+    "metrics": {
+      "downloads": "10K+ Downloads",
+      "rating": "4.7/5 Stars",
+      "retention": "75% Monthly"
+    }
+  },
+  {
+    "id": "blog-cms",
+    "title": "Custom Blog CMS Platform",
+    "client": "Content Agency",
+    "category": "Full-Stack Development",
+    "description": "Custom content management system for blogs with SEO optimization, analytics, and multi-author support.",
+    "longDescription": "Built a powerful CMS platform specifically designed for bloggers and content creators. Features include rich text editor, media management, SEO tools, analytics dashboard, multi-author support, and automated social media posting.",
+    "technologies": ["Next.js", "TypeScript", "PostgreSQL", "AWS S3", "TailwindCSS", "Vercel"],
+    "features": [
+      "Rich text editor with markdown",
+      "Media library management",
+      "SEO optimization tools",
+      "Analytics dashboard",
+      "Multi-author support",
+      "Comment moderation",
+      "Social media integration",
+      "Automated backups"
+    ],
+    "duration": "2 months",
+    "completedDate": "2024-12",
+    "status": "Completed",
+    "liveUrl": "https://blog-cms-praneeth.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606",
+    "image": "/png/placeholder.png",
+    "testimonial": {
+      "text": "The CMS is intuitive and powerful. Our content team loves it!",
+      "author": "Emily Roberts",
+      "role": "Editor, Content Agency"
+    },
+    "metrics": {
+      "posts": "500+ Published",
+      "authors": "20+ Active",
+      "traffic": "50K+ Monthly"
+    }
+  }
+]

@@ -1,7 +1,7 @@
 export const contactsData = {
     email: 'praneethvvsss@gmail.com',
     phone: '+91 6303087606',
-    address: 'Ongole Andhrapradesh India ',
+    address: 'Coimbatore TamilNadu India ',
     github: 'https://github.com/said7388',
     facebook: 'https://www.facebook.com/abusaid.riyaz/',
     linkedIn: 'https://www.linkedin.com/in/vedagiri_praneeth/',

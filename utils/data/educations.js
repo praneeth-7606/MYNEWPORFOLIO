@@ -4,7 +4,7 @@ export const educations = [
     title: "B.Tech in Computer Science and Engineering (AI)",
     duration: "2021 - Expected Graduation: June 2025",
     institution: "Amrita Vishwa Vidyapeetham, Kollam, Kerala",
-    cgpa: "CGPA: 8.4"
+    cgpa: "CGPA: 8.3"
   },
   {
     id: 2,

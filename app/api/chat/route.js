@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { queryAgentWithMCP } from '@/lib/langchain-agent-mcp';
+import { queryUnifiedAgent } from '@/lib/unified-agent';
 
 // Check if API keys exist
 if (!process.env.GEMINI_API_KEY) {
@@ -57,11 +57,11 @@ export async function POST(req) {
       }));
     
     console.log('📚 Chat history prepared:', chatHistory.length, 'messages');
-    console.log('🚀 Invoking MCP-Enhanced LangChain agent...\n');
+    console.log('🚀 Invoking Unified Agent (Smart Router)...\n');
     
-    // Use MCP-Enhanced LangChain agent with RAG + GitHub MCP tools
+    // Use Unified Agent with intelligent routing
     const agentStartTime = Date.now();
-    const result = await queryAgentWithMCP(userQuestion, chatHistory);
+    const result = await queryUnifiedAgent(userQuestion, chatHistory);
     const agentDuration = Date.now() - agentStartTime;
     
     console.log('\n✅ Agent completed in', agentDuration, 'ms');

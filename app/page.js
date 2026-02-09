@@ -8,6 +8,7 @@ import HeroSection from "./components/homepage/hero-section";
 import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
 import Certificates from "./components/homepage/certificates";
+import FreelancingShowcase from "./components/homepage/freelancing/FreelancingShowcase";
 
 async function getData() {
   const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
@@ -33,6 +34,7 @@ export default async function Home() {
       <Experience />
       <Skills />
       <Projects />
+      <FreelancingShowcase />
       <Education />
       <Certificates />
       <ContactSection />
