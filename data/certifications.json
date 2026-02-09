@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "title": "🏆 DevVoid Hackathon - 1st Prize Winner",
+    "issuer": "DevVoid (Online Competition)",
+    "date": "2025",
+    "credentialId": "DEVVOID-WINNER-2025",
+    "skills": ["Problem Solving", "Full-Stack Development", "Innovation", "Solo Achievement"],
+    "icon": "🏆",
+    "color": "from-yellow-400 to-orange-500",
+    "description": "Won 1st place out of 30 competing teams in online hackathon - Solo achievement",
+    "achievement": "1st Place out of 30 Teams"
+  },
+  {
+    "id": 2,
+    "title": "🥇 Resume Automation Hackathon - 1st Prize",
+    "issuer": "Value Health Inc (Internal)",
+    "date": "2025",
+    "credentialId": "VHI-HACKATHON-2025",
+    "skills": ["GenAI", "Mistral AI", "LangChain", "FastAPI", "Innovation"],
+    "icon": "🥇",
+    "color": "from-purple-500 to-pink-500",
+    "description": "Won 1st prize in 10-team internal hackathon for AI-powered Resume Automation Platform",
+    "achievement": "1st Prize - 10 Teams"
+  },
+  {
+    "id": 3,
+    "title": "Software Engineering Virtual Internship",
+    "issuer": "JP Morgan Chase",
+    "date": "2024",
+    "credentialId": "JPMC-SE-2024",
+    "skills": ["Software Engineering", "Financial Systems", "Problem Solving", "Agile Development"],
+    "icon": "🏦",
+    "color": "from-blue-600 to-cyan-500",
+    "description": "Completed virtual internship program focusing on software engineering practices in financial technology"
+  },
+  {
+    "id": 4,
+    "title": "Risk Management in Financial Sector",
+    "issuer": "TCS iON",
+    "date": "2024",
+    "credentialId": "TCS-ION-RM-2024",
+    "skills": ["Risk Analysis", "Financial Systems", "Compliance", "Data Security"],
+    "icon": "📊",
+    "color": "from-purple-600 to-pink-500",
+    "description": "Comprehensive training on risk management strategies and compliance in financial services"
+  },
+  {
+    "id": 5,
+    "title": "Data Structures & Algorithms",
+    "issuer": "LeetCode",
+    "date": "2024",
+    "credentialId": "LEETCODE-DSA-200+",
+    "skills": ["DSA", "Problem Solving", "Algorithms", "Optimization", "Competitive Programming"],
+    "icon": "🧠",
+    "color": "from-orange-500 to-red-500",
+    "description": "Solved 200+ problems covering arrays, trees, graphs, dynamic programming, and advanced algorithms"
+  },
+  {
+    "id": 6,
+    "title": "50-Day & 100-Day Coding Challenge",
+    "issuer": "LeetCode",
+    "date": "2024",
+    "credentialId": "LEETCODE-CHALLENGE-2024",
+    "skills": ["Consistent Practice", "Problem Solving", "Algorithm Design", "Code Optimization"],
+    "icon": "🎯",
+    "color": "from-green-500 to-emerald-500",
+    "description": "Completed intensive coding challenges demonstrating consistency and advanced problem-solving skills"
+  }
+]

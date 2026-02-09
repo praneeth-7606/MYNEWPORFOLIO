@@ -1,59 +1,56 @@
 [
   {
     "id": "cvhs-2025",
-    "title": "Associate Software Engineer Intern",
-    "company": "Connected Value Health Solutions",
+    "title": "Associate Software Engineer - GenAI",
+    "company": "Value Health Inc",
     "companyLogo": "",
+    "location": "Coimbatore, India",
     "duration": "Jan 2025 - Present",
     "startDate": "2025-01-01",
     "endDate": "",
-    "description": "Working on cutting-edge GenAI projects including Resume Automation tools and AI medical chatbots. Gained hands-on experience with Mistral APIs, LangChain, and RAG implementations. Won 1st prize in internal hackathon for innovative AI solution.",
+    "description": "Developing production GenAI systems with LLMs, RAG pipelines, and multi-agent architectures for healthcare automation.",
     "achievements": [
-      "Won 1st prize in internal hackathon with Resume Automation tool",
-      "Developed AI-powered medical chatbot using Mistral AI and LangChain",
-      "Implemented RAG (Retrieval-Augmented Generation) architecture with FAISS",
-      "Built Resume Automation system with 90% user satisfaction rate",
-      "Gained hands-on training in Generative AI applications"
+      "🏆 DevVoid Hackathon Winner - 1st Place out of 30 Teams (Solo Achievement)",
+      "🤖 Engineered multi-agent GenAI pipelines integrating LLMs with semantic retrieval",
+      "☁️ Built secure cloud-native AI pipelines using AWS Textract, Bedrock, and S3"
     ],
-    "technologies": ["React.js", "FastAPI", "Mistral AI", "LangChain", "FAISS", "Python", "MongoDB"],
-    "type": "internship"
+    "technologies": ["Python", "FastAPI", "React.js", "Mistral AI", "LangChain", "RAG", "AWS", "PostgreSQL"],
+    "type": "fulltime"
   },
   {
     "id": "self-employed-2024",
-    "title": "Pro Coder and Developer",
-    "company": "Self-Employed",
+    "title": "Full-Stack Developer",
+    "company": "Self-Employed / Freelance",
     "companyLogo": "",
+    "location": "Remote",
     "duration": "Jan 2024 - Dec 2024",
     "startDate": "2024-01-01",
     "endDate": "2024-12-31",
-    "description": "Focused on full-stack projects using Next.js and TypeScript, and enhancing skills in coding and data structures and algorithms (DSA) with Python for efficient problem-solving. Built multiple production-ready applications and contributed to open-source projects.",
+    "description": "Built production-ready full-stack applications using Next.js, TypeScript, and modern web technologies.",
     "achievements": [
-      "Developed 5+ full-stack applications using Next.js and TypeScript",
-      "Solved 200+ DSA problems on LeetCode and other platforms",
-      "Improved problem-solving efficiency by 40% through consistent practice",
-      "Built e-commerce platform with Stripe payment integration",
-      "Created job portal with role-based access control and JWT authentication"
+      "💻 Developed 5+ production applications using Next.js and TypeScript",
+      "🧠 Solved 200+ DSA problems on LeetCode improving problem-solving efficiency",
+      "🛒 Built e-commerce platform with Stripe integration and real-time inventory"
     ],
-    "technologies": ["Next.js", "TypeScript", "React.js", "Node.js", "MongoDB", "Python", "Firebase"],
+    "technologies": ["Next.js", "TypeScript", "React.js", "Node.js", "MongoDB", "Stripe API", "JWT"],
     "type": "freelance"
   },
   {
     "id": "amrita-2023",
     "title": "React.js Developer Intern",
-    "company": "Amrita Center for Wireless Networks and Applications",
+    "company": "Amrita Center for Wireless Networks",
     "companyLogo": "",
+    "location": "Kollam Kerala, India",
     "duration": "Jan 2023 - Sept 2023",
     "startDate": "2023-01-01",
     "endDate": "2023-09-30",
-    "description": "Developed and maintained dynamic web applications, collaborating with the team to implement responsive UI/UX components. Focused on React.js with seamless backend integration and enhanced customer satisfaction through intuitive interfaces.",
+    "description": "Developed dynamic web applications with focus on React.js and responsive UI/UX design.",
     "achievements": [
-      "Developed responsive web applications using React.js",
-      "Collaborated with cross-functional teams to implement UI/UX components",
-      "Improved application performance by 30% through code optimization",
-      "Implemented seamless backend integration with RESTful APIs",
-      "Enhanced customer satisfaction by developing intuitive user interfaces"
+      "🎨 Developed responsive web applications using React.js with modern UI/UX",
+      "⚡ Improved application performance by 30% through code optimization",
+      "🔌 Implemented seamless backend integration with RESTful APIs"
     ],
-    "technologies": ["React.js", "JavaScript", "CSS", "HTML", "REST APIs", "Git"],
+    "technologies": ["React.js", "JavaScript", "CSS3", "REST APIs", "Redux", "Material-UI"],
     "type": "internship"
   }
 ]

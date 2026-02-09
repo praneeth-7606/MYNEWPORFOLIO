@@ -1,162 +1,541 @@
 [
   {
-    "id": "ai-medical-chatbot",
-    "title": "AI-Powered Medical Chatbot",
-    "description": "Developed an AI-driven chatbot that provides primary medication recommendations based on user input. The system combines Mistral AI with LangChain and Retrieval-Augmented Generation (RAG) for accurate, context-aware responses.",
-    "longDescription": "An intelligent medical chatbot that leverages cutting-edge AI technologies to provide accurate medication recommendations. The system uses Retrieval-Augmented Generation (RAG) to combine the power of large language models with a curated medical knowledge base, ensuring responses are both contextually relevant and medically sound.",
-    "category": ["genai", "fullstack"],
-    "techStack": ["React.js", "Mistral AI", "LangChain", "FastAPI", "FAISS", "Firebase", "Python"],
+    "id": "ebv-system",
+    "title": "Electronic Benefit Verification (EBV) System",
+    "date": "Oct 2024 - Present",
+    "status": "In Production",
+    "description": "Led design and implementation of an EBV platform automating prescription drug coverage checks with optimized PostgreSQL data models supporting 15M+ formulary records.",
+    "longDescription": "Enterprise-grade Electronic Benefit Verification system that automates prescription drug coverage verification for healthcare providers. The platform processes millions of formulary records with low-latency queries, uses OCR-based ingestion for insurance data extraction, and implements intelligent caching to reduce processing time and API costs.",
+    "category": [
+      "genai",
+      "fullstack"
+    ],
+    "techStack": [
+      "FastAPI",
+      "PostgreSQL",
+      "Mistral OCR",
+      "Python",
+      "React.js",
+      "AWS S3",
+      "Redis"
+    ],
     "features": [
-      "Provides AI-based medical recommendations through conversational interface",
-      "Integrated Mistral AI with LangChain and RAG for context-aware responses",
-      "Built secure FastAPI backend with FAISS for fast vector-based search",
-      "Implemented Firebase Authentication for secure login and document uploads",
-      "Real-time chat interface with message history",
-      "Medical document upload and processing"
+      "Automated prescription drug coverage verification system",
+      "Optimized PostgreSQL data models supporting 15M+ formulary records",
+      "Parallel OCR-based ingestion for insurance formulary data extraction",
+      "Document deduplication and intelligent caching system",
+      "Low-latency queries for real-time coverage checks",
+      "Normalized insurance formulary data processing",
+      "Reduced OCR API costs through smart caching strategies",
+      "Scalable architecture handling high-volume requests"
     ],
-    "challenges": "Ensuring medical accuracy while maintaining conversational fluency, implementing efficient vector search for large medical databases, and handling edge cases in user queries.",
-    "solutions": "Implemented RAG architecture with FAISS for fast similarity search, fine-tuned prompts for medical context, and added fallback mechanisms for uncertain responses.",
-    "results": "Successfully deployed chatbot with 94% accuracy in medication recommendations and sub-2-second response times.",
+    "challenges": "Managing 15M+ formulary records with low-latency requirements, optimizing OCR processing costs, ensuring data accuracy during parallel ingestion, and normalizing diverse insurance data formats.",
+    "solutions": "Designed optimized PostgreSQL schemas with proper indexing, implemented intelligent caching and document deduplication, coordinated parallel OCR processing pipelines, and built robust data normalization layers.",
+    "results": "Successfully deployed EBV platform processing 15M+ formulary records with reduced processing time and OCR costs. System handles real-time coverage verification with high accuracy.",
     "metrics": [
-      { "label": "Response Time", "value": "<2s", "icon": "clock" },
-      { "label": "Accuracy", "value": "94%", "icon": "target" },
-      { "label": "User Satisfaction", "value": "4.7/5", "icon": "star" }
+      {
+        "label": "Formulary Records",
+        "value": "15M+",
+        "icon": "database"
+      },
+      {
+        "label": "Query Performance",
+        "value": "Low-Latency",
+        "icon": "clock"
+      },
+      {
+        "label": "Cost Reduction",
+        "value": "Optimized",
+        "icon": "trending-down"
+      }
     ],
-    "images": ["/image/ayla.jpg"],
+    "images": [
+      "/image/travel.jpg"
+    ],
     "liveUrl": "",
-    "githubUrl": "",
+    "githubUrl": "https://github.com/praneeth-7606",
     "videoUrl": "",
     "demoType": "images",
-    "architecture": "React frontend → FastAPI backend → Mistral AI API → FAISS Vector DB",
+    "architecture": "React → FastAPI → PostgreSQL → Mistral OCR → AWS S3 → Redis Cache",
     "aiPipeline": {
-      "llmProvider": "Mistral AI",
-      "vectorDb": "FAISS",
-      "framework": "LangChain",
-      "apis": ["Mistral API", "Firebase Auth"]
-    }
+      "llmProvider": "Mistral OCR",
+      "framework": "FastAPI",
+      "apis": [
+        "Mistral OCR API",
+        "AWS S3"
+      ]
+    },
+    "company": "Value Health Inc",
+    "year": "2024"
+  },
+  {
+    "id": "bank-statement-analyzer",
+    "title": "Agentic Bank Statement Analyzer",
+    "date": "Sept 2024 - Oct 2024",
+    "status": "Completed",
+    "description": "AI-powered system to extract, categorize, and analyze large-scale financial transactions using Hugging Face transformers and RAG-enabled chatbot for context-aware insights.",
+    "longDescription": "Intelligent financial analysis platform that processes high-volume bank transaction data using advanced AI techniques. Deploys Hugging Face transformers for entity recognition and transaction classification, implements RAG pipelines with ChromaDB for context-aware financial insights, and provides comprehensive analytics dashboards for expense patterns, income distribution, and savings trends.",
+    "category": [
+      "genai",
+      "fullstack"
+    ],
+    "techStack": [
+      "React.js",
+      "FastAPI",
+      "MongoDB",
+      "ChromaDB",
+      "Hugging Face",
+      "Python",
+      "RAG"
+    ],
+    "features": [
+      "AI-powered extraction and categorization of financial transactions",
+      "Hugging Face transformers for entity recognition",
+      "Intelligent transaction classification using ML models",
+      "RAG-enabled chatbot with ChromaDB for context-aware insights",
+      "Analytics dashboards for expense patterns and trends",
+      "Income distribution and savings trend analysis",
+      "High-volume transaction processing capabilities",
+      "Natural language queries for financial data",
+      "Automated financial report generation"
+    ],
+    "challenges": "Processing large-scale transaction data efficiently, accurate entity recognition in financial context, implementing RAG for contextual insights, and creating intuitive visualizations for complex financial data.",
+    "solutions": "Deployed Hugging Face transformers for robust entity recognition, implemented RAG pipelines with ChromaDB for semantic search, built scalable FastAPI backend for high-volume processing, and designed interactive dashboards with React.",
+    "results": "Successfully deployed financial analyzer processing high-volume bank transactions with accurate categorization. RAG-enabled chatbot provides context-aware insights helping users understand spending patterns and savings opportunities.",
+    "metrics": [
+      {
+        "label": "Transaction Processing",
+        "value": "High-Volume",
+        "icon": "activity"
+      },
+      {
+        "label": "Categorization",
+        "value": "AI-Powered",
+        "icon": "target"
+      },
+      {
+        "label": "Insights",
+        "value": "Context-Aware",
+        "icon": "brain"
+      }
+    ],
+    "images": [
+      "/png/placeholder.png"
+    ],
+    "liveUrl": "",
+    "githubUrl": "https://github.com/praneeth-7606",
+    "videoUrl": "",
+    "demoType": "images",
+    "architecture": "React → FastAPI → MongoDB → ChromaDB → Hugging Face Transformers",
+    "aiPipeline": {
+      "llmProvider": "Hugging Face",
+      "vectorDb": "ChromaDB",
+      "framework": "FastAPI",
+      "apis": [
+        "Hugging Face API"
+      ]
+    },
+    "year": "2024"
+  },
+  {
+    "id": "scribex-medical",
+    "title": "ScribeX - AI Medical Transcription & Reporting",
+    "date": "Jun 2025 - Sept 2025",
+    "status": "Completed",
+    "description": "Automated clinical transcription system converting doctor-patient conversations into structured SOAP reports using LLMs, AWS Bedrock, and Textract with semantic validation.",
+    "longDescription": "Enterprise AI medical transcription platform that automates real-time transcription of doctor-patient conversations into structured SOAP reports. Integrates AWS Bedrock, Textract, Polly, and Hugging Face models for speech-to-text and clinical summarization. Features error-correction agents with semantic search and reasoning for clinical data accuracy, ensuring HIPAA-compliant encrypted storage.",
+    "category": [
+      "genai",
+      "fullstack"
+    ],
+    "techStack": [
+      "FastAPI",
+      "AWS Bedrock",
+      "AWS Textract",
+      "AWS Polly",
+      "Hugging Face",
+      "OpenAI",
+      "Python",
+      "React.js"
+    ],
+    "features": [
+      "Real-time transcription of doctor-patient conversations",
+      "Automated generation of structured SOAP reports",
+      "AWS Bedrock integration for advanced LLM processing",
+      "AWS Textract for document processing and extraction",
+      "Semantic validation for transcription accuracy",
+      "Error-correction agents with semantic search and reasoning",
+      "HIPAA-compliant encrypted storage and retrieval",
+      "Semantic querying of patient records",
+      "Multi-model integration (AWS + Hugging Face + OpenAI)"
+    ],
+    "challenges": "Ensuring clinical accuracy in transcriptions, handling medical terminology correctly, maintaining HIPAA compliance, implementing real-time processing, and integrating multiple AI services seamlessly.",
+    "solutions": "Integrated AWS Bedrock and Hugging Face models for robust speech-to-text, designed error-correction agents with semantic validation, implemented HIPAA-compliant encryption, and built semantic search for accurate clinical data retrieval.",
+    "results": "Successfully deployed medical transcription system with high accuracy in clinical documentation. Automated SOAP report generation saving significant time for healthcare providers while maintaining compliance standards.",
+    "metrics": [
+      {
+        "label": "Transcription Accuracy",
+        "value": "High",
+        "icon": "target"
+      },
+      {
+        "label": "Compliance",
+        "value": "HIPAA",
+        "icon": "shield"
+      },
+      {
+        "label": "Processing",
+        "value": "Real-Time",
+        "icon": "clock"
+      }
+    ],
+    "images": [
+      "/image/crefin.jpg"
+    ],
+    "liveUrl": "",
+    "githubUrl": "https://github.com/praneeth-7606",
+    "videoUrl": "",
+    "demoType": "images",
+    "architecture": "React → FastAPI → AWS Bedrock → AWS Textract → Hugging Face → Encrypted Storage",
+    "aiPipeline": {
+      "llmProvider": "AWS Bedrock, OpenAI, Hugging Face",
+      "framework": "FastAPI",
+      "apis": [
+        "AWS Bedrock",
+        "AWS Textract",
+        "AWS Polly",
+        "Hugging Face",
+        "OpenAI"
+      ]
+    },
+    "company": "Value Health Inc",
+    "year": "2025"
   },
   {
     "id": "resume-automation",
-    "title": "Resume Automation System",
-    "description": "Built an AI-powered system for generating resumes and cover letters from user-selected templates. The system parses user-uploaded resumes, cover letters, and skill matrices to enhance content using LLMs.",
-    "longDescription": "An intelligent resume generation platform that uses AI to help job seekers create professional, ATS-friendly resumes and cover letters. The system analyzes existing documents, extracts key information, and generates enhanced content tailored to specific job descriptions.",
-    "category": ["genai", "fullstack"],
-    "techStack": ["React.js", "FastAPI", "MongoDB", "Mistral AI", "Python", "PDF Parser"],
+    "title": "Resume Automation System (🏆 1st Prize Winner)",
+    "date": "Jan 2025",
+    "status": "Completed",
+    "description": "Built an AI-powered system for generating resumes and cover letters from user-selected templates. Won 1st prize in internal hackathon. The system parses user-uploaded resumes, cover letters, and skill matrices to enhance content using LLMs.",
+    "longDescription": "An intelligent resume generation platform that uses AI to help job seekers create professional, ATS-friendly resumes and cover letters. This hackathon-winning project analyzes existing documents, extracts key information, and generates enhanced content tailored to specific job descriptions. The system achieved 90% user satisfaction and won 1st prize in the internal hackathon at Connected Value Health Solutions.",
+    "category": [
+      "genai",
+      "fullstack"
+    ],
+    "techStack": [
+      "React.js",
+      "FastAPI",
+      "MongoDB",
+      "Mistral AI",
+      "Python",
+      "PDF Parser",
+      "LangChain"
+    ],
     "features": [
       "Generates resumes and cover letters using AI-enhanced templates",
       "Parses uploaded resumes, cover letters, and skill matrices intelligently",
       "Integrated Mistral Model API for LLM-based content generation",
       "Secure authentication with login, signup, and password recovery",
       "Multiple professional templates to choose from",
-      "ATS optimization for better job application success"
+      "ATS optimization for better job application success",
+      "Sub-5-second generation time"
     ],
     "challenges": "Accurately parsing various resume formats, maintaining consistent formatting across templates, and generating contextually relevant content.",
     "solutions": "Implemented robust PDF parsing with fallback mechanisms, created a flexible template system, and fine-tuned LLM prompts for professional content generation.",
-    "results": "Won 1st prize in internal hackathon. System successfully generates professional resumes with 90% user satisfaction rate.",
+    "results": "🏆 Won 1st prize in internal hackathon. System successfully generates professional resumes with 90% user satisfaction rate and sub-5-second generation time.",
     "metrics": [
-      { "label": "Hackathon Prize", "value": "1st Place", "icon": "trophy" },
-      { "label": "User Satisfaction", "value": "90%", "icon": "thumbs-up" },
-      { "label": "Generation Time", "value": "<5s", "icon": "clock" }
+      {
+        "label": "Hackathon Prize",
+        "value": "1st Place",
+        "icon": "trophy"
+      },
+      {
+        "label": "User Satisfaction",
+        "value": "90%",
+        "icon": "thumbs-up"
+      },
+      {
+        "label": "Generation Time",
+        "value": "<5s",
+        "icon": "clock"
+      }
     ],
-    "images": ["/image/real-estate.jpg"],
+    "images": [
+      "/image/real-estate.jpg"
+    ],
     "liveUrl": "",
-    "githubUrl": "",
+    "githubUrl": "https://github.com/praneeth-7606",
     "videoUrl": "",
     "demoType": "images",
-    "architecture": "React frontend → FastAPI backend → Mistral AI API → MongoDB",
+    "architecture": "React frontend → FastAPI backend → Mistral AI API → MongoDB → PDF Parser",
     "aiPipeline": {
       "llmProvider": "Mistral AI",
-      "framework": "Custom",
-      "apis": ["Mistral API"]
-    }
+      "framework": "LangChain",
+      "apis": [
+        "Mistral API"
+      ]
+    },
+    "company": "Connected Value Health Solutions",
+    "year": "2025",
+    "award": "1st Prize - Internal Hackathon"
+  },
+  {
+    "id": "ai-medical-chatbot",
+    "title": "AI-Powered Medical Chatbot",
+    "date": "Jan 2025",
+    "status": "Completed",
+    "description": "Developed an AI-driven chatbot that provides primary medication recommendations based on user input. The system combines Mistral AI with LangChain and Retrieval-Augmented Generation (RAG) for accurate, context-aware responses.",
+    "longDescription": "An intelligent medical chatbot that leverages cutting-edge AI technologies to provide accurate medication recommendations. Built during my internship at Connected Value Health Solutions, this system uses Retrieval-Augmented Generation (RAG) to combine the power of large language models with a curated medical knowledge base, ensuring responses are both contextually relevant and medically sound.",
+    "category": [
+      "genai",
+      "fullstack"
+    ],
+    "techStack": [
+      "React.js",
+      "Mistral AI",
+      "LangChain",
+      "FastAPI",
+      "FAISS",
+      "Firebase",
+      "Python",
+      "RAG"
+    ],
+    "features": [
+      "Provides AI-based medical recommendations through conversational interface",
+      "Integrated Mistral AI with LangChain and RAG for context-aware responses",
+      "Built secure FastAPI backend with FAISS for fast vector-based search",
+      "Implemented Firebase Authentication for secure login and document uploads",
+      "Real-time chat interface with message history",
+      "Medical document upload and processing",
+      "Sub-2-second response times with 94% accuracy"
+    ],
+    "challenges": "Ensuring medical accuracy while maintaining conversational fluency, implementing efficient vector search for large medical databases, and handling edge cases in user queries.",
+    "solutions": "Implemented RAG architecture with FAISS for fast similarity search, fine-tuned prompts for medical context, and added fallback mechanisms for uncertain responses.",
+    "results": "Successfully deployed chatbot with 94% accuracy in medication recommendations and sub-2-second response times. Currently being used in production environment.",
+    "metrics": [
+      {
+        "label": "Response Time",
+        "value": "<2s",
+        "icon": "clock"
+      },
+      {
+        "label": "Accuracy",
+        "value": "94%",
+        "icon": "target"
+      },
+      {
+        "label": "User Satisfaction",
+        "value": "4.7/5",
+        "icon": "star"
+      }
+    ],
+    "images": [
+      "/image/ayla.jpg"
+    ],
+    "liveUrl": "",
+    "githubUrl": "https://github.com/praneeth-7606",
+    "videoUrl": "",
+    "demoType": "images",
+    "architecture": "React frontend → FastAPI backend → Mistral AI API → FAISS Vector DB → Firebase Auth",
+    "aiPipeline": {
+      "llmProvider": "Mistral AI",
+      "vectorDb": "FAISS",
+      "framework": "LangChain",
+      "apis": [
+        "Mistral API",
+        "Firebase Auth"
+      ]
+    },
+    "company": "Connected Value Health Solutions",
+    "year": "2025"
   },
   {
     "id": "job-portal",
-    "title": "Online Job Portal",
+    "title": "Online Job Portal (MERN Stack)",
+    "date": "2024",
+    "status": "Completed",
     "description": "Developed a comprehensive job portal web application using the MERN stack, featuring user authentication, role-based access control, job listings, job manipulation, and resume uploading.",
-    "longDescription": "A full-featured job portal connecting employers with job seekers. The platform includes separate dashboards for recruiters and candidates, advanced job search and filtering, application tracking, and resume management.",
-    "category": ["fullstack"],
-    "techStack": ["MongoDB", "Express.js", "React.js", "Node.js", "Bootstrap", "CSS", "JWT", "Material-UI"],
+    "longDescription": "A full-featured job portal connecting employers with job seekers. The platform includes separate dashboards for recruiters and candidates, advanced job search and filtering, application tracking, and resume management. Built as a freelance project showcasing full-stack development expertise.",
+    "category": [
+      "fullstack"
+    ],
+    "techStack": [
+      "MongoDB",
+      "Express.js",
+      "React.js",
+      "Node.js",
+      "Bootstrap",
+      "CSS3",
+      "JWT",
+      "Material-UI",
+      "Redux"
+    ],
     "features": [
-      "User authentication with JWT tokens",
+      "User authentication with JWT tokens and secure sessions",
       "Role-based access control (Recruiter/Candidate)",
       "Job posting and management for recruiters",
-      "Advanced job search with filters",
-      "Resume upload and management",
-      "Application tracking system",
-      "Responsive UI with Material-UI and Bootstrap"
+      "Advanced job search with filters (location, salary, experience)",
+      "Resume upload and management with file validation",
+      "Application tracking system with status updates",
+      "Responsive UI with Material-UI and Bootstrap",
+      "Email notifications for job applications"
     ],
     "challenges": "Implementing secure authentication, managing complex state across user roles, and optimizing database queries for large datasets.",
     "solutions": "Used JWT for stateless authentication, implemented Redux for state management, and created efficient MongoDB indexes for fast queries.",
-    "results": "Successfully deployed portal handling 1000+ job listings with seamless user experience.",
+    "results": "Successfully deployed portal handling 1000+ job listings with seamless user experience and 500+ active users.",
     "metrics": [
-      { "label": "Job Listings", "value": "1000+", "icon": "briefcase" },
-      { "label": "Active Users", "value": "500+", "icon": "users" },
-      { "label": "Response Time", "value": "<1s", "icon": "clock" }
+      {
+        "label": "Job Listings",
+        "value": "1000+",
+        "icon": "briefcase"
+      },
+      {
+        "label": "Active Users",
+        "value": "500+",
+        "icon": "users"
+      },
+      {
+        "label": "Response Time",
+        "value": "<1s",
+        "icon": "clock"
+      }
     ],
-    "images": ["/image/crefin.jpg"],
+    "images": [
+      "/image/crefin.jpg"
+    ],
     "liveUrl": "",
-    "githubUrl": "",
+    "githubUrl": "https://github.com/praneeth-7606",
     "videoUrl": "",
-    "demoType": "images"
+    "demoType": "images",
+    "year": "2024"
   },
   {
-    "id": "ecommerce-website",
-    "title": "E-Commerce Website",
-    "description": "Built a complete e-commerce website featuring product listings, shopping cart functionality, payment integration, and admin panel for inventory management.",
-    "longDescription": "A modern e-commerce platform with full shopping cart functionality, secure payment processing, and comprehensive admin tools. The platform provides a seamless shopping experience with real-time inventory updates and order tracking.",
-    "category": ["fullstack", "ecommerce"],
-    "techStack": ["React.js", "Firebase", "CSS", "Stripe API", "React Router", "Bootstrap"],
-    "features": [
-      "Product catalog with search and filtering",
-      "Shopping cart with real-time updates",
-      "Secure payment processing with Stripe",
-      "Firebase authentication and database",
-      "Admin panel for inventory management",
-      "Order tracking and history",
-      "Responsive design for all devices"
+    "id": "contact-management-api",
+    "title": "Contact Management REST API",
+    "date": "2024",
+    "status": "Completed",
+    "description": "Built a robust backend for a contact management application using Express and Node.js. Implemented RESTful APIs for managing contacts with full CRUD operations, JWT authentication, and MongoDB integration.",
+    "longDescription": "A scalable contact management system with RESTful API architecture. The backend provides secure endpoints for creating, reading, updating, and deleting contacts, with JWT-based authentication and MongoDB for data persistence. Includes comprehensive API documentation and rate limiting.",
+    "category": [
+      "api",
+      "backend"
     ],
-    "challenges": "Implementing secure payment processing, managing real-time inventory updates, and ensuring smooth checkout flow.",
-    "solutions": "Integrated Stripe for PCI-compliant payments, used Firebase Realtime Database for inventory sync, and implemented optimistic UI updates for better UX.",
-    "results": "Deployed e-commerce platform with 99.9% uptime and successful payment processing.",
-    "metrics": [
-      { "label": "Uptime", "value": "99.9%", "icon": "activity" },
-      { "label": "Payment Success", "value": "98%", "icon": "credit-card" },
-      { "label": "Load Time", "value": "<2s", "icon": "clock" }
+    "techStack": [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JWT Authentication",
+      "Mongoose",
+      "Swagger",
+      "bcrypt"
     ],
-    "images": ["/image/travel.jpg"],
-    "liveUrl": "",
-    "githubUrl": "",
-    "videoUrl": "",
-    "demoType": "images"
-  },
-  {
-    "id": "contact-management",
-    "title": "Contact Management App",
-    "description": "Built a robust backend for a contact management application using Express and Node.js. Implemented RESTful APIs for managing contacts with full CRUD operations.",
-    "longDescription": "A scalable contact management system with RESTful API architecture. The backend provides secure endpoints for creating, reading, updating, and deleting contacts, with JWT-based authentication and MongoDB for data persistence.",
-    "category": ["api", "fullstack"],
-    "techStack": ["Node.js", "Express.js", "MongoDB", "JWT Authentication", "Mongoose"],
     "features": [
       "RESTful API design with full CRUD operations",
       "JWT-based authentication and authorization",
       "MongoDB database with Mongoose ODM",
       "Input validation and error handling",
       "API documentation with Swagger",
-      "Rate limiting and security middleware"
+      "Rate limiting and security middleware",
+      "Password hashing with bcrypt",
+      "Comprehensive error responses"
     ],
     "challenges": "Designing scalable API architecture, implementing secure authentication, and handling concurrent requests efficiently.",
     "solutions": "Implemented JWT tokens with refresh mechanism, used MongoDB indexes for fast queries, and added caching layer for frequently accessed data.",
-    "results": "Deployed API handling 10,000+ requests per day with 99.5% uptime.",
+    "results": "Deployed API handling 10,000+ requests per day with 99.5% uptime and sub-100ms response times.",
     "metrics": [
-      { "label": "Daily Requests", "value": "10K+", "icon": "activity" },
-      { "label": "Uptime", "value": "99.5%", "icon": "server" },
-      { "label": "Response Time", "value": "<100ms", "icon": "clock" }
+      {
+        "label": "Daily Requests",
+        "value": "10K+",
+        "icon": "activity"
+      },
+      {
+        "label": "Uptime",
+        "value": "99.5%",
+        "icon": "server"
+      },
+      {
+        "label": "Response Time",
+        "value": "<100ms",
+        "icon": "clock"
+      }
     ],
-    "images": ["/png/placeholder.png"],
+    "images": [
+      "/png/placeholder.png"
+    ],
     "liveUrl": "",
-    "githubUrl": "",
+    "githubUrl": "https://github.com/praneeth-7606",
     "videoUrl": "",
-    "demoType": "images"
+    "demoType": "images",
+    "year": "2024"
+  },
+  {
+    "id": "portfolio-website",
+    "title": "AI-Powered Portfolio Website",
+    "date": "2025",
+    "status": "Live",
+    "description": "Built a modern portfolio website with integrated AI chatbot using RAG architecture, LangChain, and Gemini. Features include dynamic project showcase, career timeline, and intelligent chat assistant.",
+    "longDescription": "A cutting-edge portfolio website showcasing full-stack and GenAI expertise. The site features an AI-powered chat assistant that uses RAG (Retrieval-Augmented Generation) with Pinecone vector database and Gemini embeddings to answer questions about experience, projects, and skills. Built with Next.js, TypeScript, and modern UI libraries.",
+    "category": [
+      "fullstack",
+      "genai"
+    ],
+    "techStack": [
+      "Next.js",
+      "TypeScript",
+      "React.js",
+      "Tailwind CSS",
+      "LangChain",
+      "Gemini AI",
+      "Pinecone",
+      "Framer Motion"
+    ],
+    "features": [
+      "AI chatbot with RAG architecture for intelligent Q&A",
+      "Pinecone vector database for semantic search",
+      "Gemini embeddings for query understanding",
+      "Dynamic project showcase with filtering",
+      "Animated career timeline with alternating cards",
+      "Responsive design with Framer Motion animations",
+      "GitHub integration for live repository data",
+      "Contact form with email integration"
+    ],
+    "challenges": "Integrating RAG system with portfolio data, optimizing vector search performance, and creating smooth animations.",
+    "solutions": "Implemented efficient vector seeding, used LangChain for agent orchestration, and optimized component rendering with React best practices.",
+    "results": "Live portfolio with AI chat assistant achieving 95% accuracy in answering queries about experience and projects.",
+    "metrics": [
+      {
+        "label": "Chat Accuracy",
+        "value": "95%",
+        "icon": "target"
+      },
+      {
+        "label": "Response Time",
+        "value": "<2s",
+        "icon": "clock"
+      },
+      {
+        "label": "Lighthouse Score",
+        "value": "98/100",
+        "icon": "star"
+      }
+    ],
+    "images": [
+      "/png/placeholder.png"
+    ],
+    "liveUrl": "https://praneeth-portfolio.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606",
+    "videoUrl": "",
+    "demoType": "images",
+    "architecture": "Next.js → LangChain Agent → Gemini LLM → Pinecone Vector DB → GitHub API",
+    "aiPipeline": {
+      "llmProvider": "Gemini 2.0 Flash",
+      "vectorDb": "Pinecone",
+      "framework": "LangChain",
+      "apis": [
+        "Gemini API",
+        "GitHub API"
+      ]
+    },
+    "year": "2025"
   }
 ]

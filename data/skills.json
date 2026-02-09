@@ -1,26 +1,26 @@
 [
   {
-    "name": "React.js",
+    "name": "React",
     "category": "frontend",
     "proficiency": 95,
     "yearsOfExperience": 3,
-    "projectCount": 15,
+    "projectsCompleted": 15,
     "icon": "react"
   },
   {
-    "name": "Next.js",
+    "name": "Next JS",
     "category": "frontend",
     "proficiency": 90,
     "yearsOfExperience": 2,
-    "projectCount": 8,
-    "icon": "nextjs"
+    "projectsCompleted": 8,
+    "icon": "nextJS"
   },
   {
     "name": "TypeScript",
     "category": "frontend",
-    "proficiency": 85,
+    "proficiency": 88,
     "yearsOfExperience": 2,
-    "projectCount": 10,
+    "projectsCompleted": 10,
     "icon": "typescript"
   },
   {
@@ -28,7 +28,7 @@
     "category": "frontend",
     "proficiency": 95,
     "yearsOfExperience": 3,
-    "projectCount": 20,
+    "projectsCompleted": 20,
     "icon": "javascript"
   },
   {
@@ -36,31 +36,31 @@
     "category": "frontend",
     "proficiency": 95,
     "yearsOfExperience": 4,
-    "projectCount": 25,
+    "projectsCompleted": 25,
     "icon": "html"
   },
   {
     "name": "CSS",
     "category": "frontend",
-    "proficiency": 90,
+    "proficiency": 92,
     "yearsOfExperience": 4,
-    "projectCount": 25,
+    "projectsCompleted": 25,
     "icon": "css"
   },
   {
-    "name": "Tailwind CSS",
+    "name": "Tailwind",
     "category": "frontend",
     "proficiency": 90,
     "yearsOfExperience": 2,
-    "projectCount": 12,
+    "projectsCompleted": 12,
     "icon": "tailwind"
   },
   {
-    "name": "Material-UI",
+    "name": "MaterialUI",
     "category": "frontend",
     "proficiency": 85,
     "yearsOfExperience": 2,
-    "projectCount": 8,
+    "projectsCompleted": 8,
     "icon": "materialui"
   },
   {
@@ -68,15 +68,15 @@
     "category": "frontend",
     "proficiency": 85,
     "yearsOfExperience": 3,
-    "projectCount": 10,
+    "projectsCompleted": 10,
     "icon": "bootstrap"
   },
   {
     "name": "Node.js",
     "category": "backend",
-    "proficiency": 90,
+    "proficiency": 92,
     "yearsOfExperience": 3,
-    "projectCount": 15,
+    "projectsCompleted": 15,
     "icon": "nodejs"
   },
   {
@@ -84,23 +84,23 @@
     "category": "backend",
     "proficiency": 90,
     "yearsOfExperience": 3,
-    "projectCount": 12,
+    "projectsCompleted": 12,
     "icon": "express"
   },
   {
     "name": "FastAPI",
     "category": "backend",
-    "proficiency": 85,
+    "proficiency": 88,
     "yearsOfExperience": 1,
-    "projectCount": 5,
-    "icon": "fastapi"
+    "projectsCompleted": 5,
+    "icon": "fastify"
   },
   {
     "name": "Python",
     "category": "backend",
-    "proficiency": 85,
+    "proficiency": 90,
     "yearsOfExperience": 2,
-    "projectCount": 10,
+    "projectsCompleted": 10,
     "icon": "python"
   },
   {
@@ -108,15 +108,15 @@
     "category": "database",
     "proficiency": 90,
     "yearsOfExperience": 3,
-    "projectCount": 12,
-    "icon": "mongodb"
+    "projectsCompleted": 12,
+    "icon": "mongoDB"
   },
   {
     "name": "MySQL",
     "category": "database",
     "proficiency": 80,
     "yearsOfExperience": 2,
-    "projectCount": 6,
+    "projectsCompleted": 6,
     "icon": "mysql"
   },
   {
@@ -124,7 +124,7 @@
     "category": "database",
     "proficiency": 75,
     "yearsOfExperience": 1,
-    "projectCount": 4,
+    "projectsCompleted": 4,
     "icon": "postgresql"
   },
   {
@@ -132,95 +132,127 @@
     "category": "database",
     "proficiency": 85,
     "yearsOfExperience": 2,
-    "projectCount": 8,
+    "projectsCompleted": 8,
     "icon": "firebase"
-  },
-  {
-    "name": "Mistral AI",
-    "category": "ai-ml",
-    "proficiency": 85,
-    "yearsOfExperience": 1,
-    "projectCount": 3,
-    "icon": "ai"
   },
   {
     "name": "LangChain",
     "category": "ai-ml",
-    "proficiency": 80,
+    "proficiency": 90,
     "yearsOfExperience": 1,
-    "projectCount": 3,
-    "icon": "langchain"
+    "projectsCompleted": 3,
+    "icon": "python"
+  },
+  {
+    "name": "Mistral AI",
+    "category": "ai-ml",
+    "proficiency": 88,
+    "yearsOfExperience": 1,
+    "projectsCompleted": 3,
+    "icon": "python"
+  },
+  {
+    "name": "RAG Systems",
+    "category": "ai-ml",
+    "proficiency": 85,
+    "yearsOfExperience": 1,
+    "projectsCompleted": 2,
+    "icon": "python"
   },
   {
     "name": "FAISS",
     "category": "ai-ml",
-    "proficiency": 75,
+    "proficiency": 82,
     "yearsOfExperience": 1,
-    "projectCount": 2,
-    "icon": "database"
+    "projectsCompleted": 2,
+    "icon": "python"
   },
   {
-    "name": "OpenAI API",
+    "name": "TensorFlow",
     "category": "ai-ml",
     "proficiency": 80,
     "yearsOfExperience": 1,
-    "projectCount": 2,
-    "icon": "openai"
+    "projectsCompleted": 3,
+    "icon": "tensorflow"
+  },
+  {
+    "name": "PyTorch",
+    "category": "ai-ml",
+    "proficiency": 78,
+    "yearsOfExperience": 1,
+    "projectsCompleted": 2,
+    "icon": "pytorch"
+  },
+  {
+    "name": "OpenCV",
+    "category": "ai-ml",
+    "proficiency": 75,
+    "yearsOfExperience": 1,
+    "projectsCompleted": 2,
+    "icon": "opencv"
+  },
+  {
+    "name": "NumPy",
+    "category": "ai-ml",
+    "proficiency": 85,
+    "yearsOfExperience": 2,
+    "projectsCompleted": 5,
+    "icon": "numpy"
   },
   {
     "name": "Git",
     "category": "tools",
-    "proficiency": 90,
+    "proficiency": 92,
     "yearsOfExperience": 3,
-    "projectCount": 25,
+    "projectsCompleted": 25,
     "icon": "git"
   },
   {
-    "name": "GitHub",
+    "name": "Figma",
+    "category": "tools",
+    "proficiency": 88,
+    "yearsOfExperience": 3,
+    "projectsCompleted": 20,
+    "icon": "figma"
+  },
+  {
+    "name": "Canva",
     "category": "tools",
     "proficiency": 90,
-    "yearsOfExperience": 3,
-    "projectCount": 25,
-    "icon": "github"
-  },
-  {
-    "name": "VS Code",
-    "category": "tools",
-    "proficiency": 95,
     "yearsOfExperience": 4,
-    "projectCount": 30,
-    "icon": "vscode"
+    "projectsCompleted": 25,
+    "icon": "canva"
   },
   {
-    "name": "Postman",
+    "name": "Photoshop",
     "category": "tools",
-    "proficiency": 85,
+    "proficiency": 82,
     "yearsOfExperience": 2,
-    "projectCount": 15,
-    "icon": "postman"
+    "projectsCompleted": 12,
+    "icon": "photoshop"
   },
   {
     "name": "Docker",
     "category": "devops",
-    "proficiency": 70,
+    "proficiency": 72,
     "yearsOfExperience": 1,
-    "projectCount": 3,
+    "projectsCompleted": 3,
     "icon": "docker"
   },
   {
-    "name": "Vercel",
+    "name": "Nginx",
     "category": "devops",
-    "proficiency": 85,
+    "proficiency": 80,
     "yearsOfExperience": 2,
-    "projectCount": 10,
-    "icon": "vercel"
+    "projectsCompleted": 8,
+    "icon": "nginx"
   },
   {
     "name": "AWS",
     "category": "devops",
-    "proficiency": 65,
+    "proficiency": 70,
     "yearsOfExperience": 1,
-    "projectCount": 2,
+    "projectsCompleted": 3,
     "icon": "aws"
   }
 ]

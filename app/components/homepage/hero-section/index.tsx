@@ -12,10 +12,10 @@ import personalData from '@/data/personal.json';
 import CodeDisplay from './CodeDisplay';
 
 const specializations = [
-  "Full-Stack Developer",
+  "AI Full-Stack Engineer",
   "GenAI Specialist",
-  "React Expert",
-  "AI Integration Engineer"
+  "LLM Integration Expert",
+  "Cloud AI Architect"
 ];
 
 export default function HeroSection() {

@@ -64,7 +64,7 @@ export interface Skill {
   category: SkillCategory;
   proficiency: number; // 0-100
   yearsOfExperience: number;
-  projectCount?: number;
+  projectsCompleted?: number;
   icon: string;
 }
 
