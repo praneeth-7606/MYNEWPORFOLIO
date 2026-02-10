@@ -10,7 +10,7 @@ const navItems = [
   { label: "Experience", href: "/#experience" },
   { label: "Skills", href: "/#skills" },
   { label: "Projects", href: "/#projects" },
-  { label: "Services", href: "/#services" },
+  { label: "Freelancing", href: "/freelancing" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -61,6 +61,13 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
+    
+    // Check if it's an external page link
+    if (!href.startsWith('/#')) {
+      window.location.href = href;
+      return;
+    }
+    
     const element = document.querySelector(href);
     if (element) {
       const offset = 80; // Height of fixed navbar

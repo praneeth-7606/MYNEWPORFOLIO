@@ -98,7 +98,7 @@ export default function ExperienceSection() {
 
           {/* Experience Cards */}
           <div className="space-y-16 lg:space-y-24">
-            {experienceData.map((exp: Experience, index: number) => {
+            {(experienceData as Experience[]).map((exp, index) => {
               const isLeft = index % 2 === 0;
               
               return (

@@ -40,7 +40,7 @@ export default function Background3D() {
       }
 
       draw(time: number) {
-        if (!ctx) return;
+        if (!ctx || !canvas) return;
         ctx.beginPath();
         ctx.moveTo(0, canvas.height);
         for (let x = 0; x <= canvas.width; x++) {
@@ -70,6 +70,7 @@ export default function Background3D() {
       trail: { x: number; y: number }[];
 
       constructor() {
+        if (!canvas) throw new Error('Canvas not initialized');
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 4 + 1;
@@ -84,6 +85,7 @@ export default function Background3D() {
       }
 
       update() {
+        if (!canvas) return;
         this.trail.unshift({ x: this.x, y: this.y });
         if (this.trail.length > 8) this.trail.pop();
         this.x += this.speedX;
@@ -133,6 +135,7 @@ export default function Background3D() {
       pulseSpeed: number;
 
       constructor() {
+        if (!canvas) throw new Error('Canvas not initialized');
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.radius = Math.random() * 60 + 40;
@@ -145,6 +148,7 @@ export default function Background3D() {
       }
 
       update() {
+        if (!canvas) return;
         this.x += this.speedX;
         this.y += this.speedY;
         this.pulsePhase += this.pulseSpeed;
@@ -191,6 +195,7 @@ export default function Background3D() {
     window.addEventListener('mousemove', handleMouseMove);
 
     const animate = () => {
+      if (!canvas || !ctx) return;
       time += 0.01;
       ctx.fillStyle = 'rgba(10, 14, 39, 0.08)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);

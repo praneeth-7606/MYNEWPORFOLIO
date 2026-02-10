@@ -19,7 +19,7 @@ export default function ProjectsSection() {
 
   const filteredProjects = selectedCategory === 'all'
     ? projectsData
-    : projectsData.filter((project: Project) => 
+    : (projectsData as Project[]).filter((project) => 
         project.category.includes(selectedCategory as any)
       );
 
@@ -140,7 +140,7 @@ export default function ProjectsSection() {
             </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {featuredProjects.map((project: Project, index: number) => {
+              {(featuredProjects as Project[]).map((project, index) => {
                 const ProjectIcon = getProjectIcon(project);
                 const gradient = getProjectGradient(index);
                 

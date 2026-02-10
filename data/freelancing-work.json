@@ -1,0 +1,314 @@
+[
+  {
+    "id": "weather-dashboard",
+    "title": "Weather Dashboard Application",
+    "category": "Full-Stack Development",
+    "type": "Personal Project",
+    "description": "A modern, responsive weather dashboard built with React.js featuring secure authentication, real-time weather data, and beautiful glassmorphism UI design.",
+    "longDescription": "Developed a comprehensive weather dashboard application with Supabase authentication, OpenWeatherMap API integration, and a stunning glassmorphism design. The application features real-time weather updates every 30 seconds, 5-day forecasts, geolocation support, and persistent user sessions. Built with modern React patterns including Context API for state management and custom hooks for reusable logic.",
+    "technologies": [
+      "React 18.2.0",
+      "JavaScript ES6+",
+      "Supabase",
+      "OpenWeatherMap API",
+      "CSS Modules",
+      "JWT",
+      "Geolocation API"
+    ],
+    "features": [
+      "Secure user authentication with Supabase",
+      "Real-time weather data with auto-refresh every 30 seconds",
+      "City search with autocomplete functionality",
+      "5-day weather forecast with daily predictions",
+      "Geolocation support for current location weather",
+      "Unit conversion between Celsius and Fahrenheit",
+      "Search history with quick access",
+      "Glassmorphism UI design with smooth animations",
+      "Responsive layout for all devices",
+      "Persistent sessions across browser sessions",
+      "Comprehensive error handling and recovery",
+      "Dark theme integration"
+    ],
+    "technicalHighlights": [
+      "React Context API for global state management",
+      "Custom hooks for reusable logic",
+      "CSS3 animations and micro-interactions",
+      "Row-Level Security with Supabase",
+      "Optimized performance with React 18 features",
+      "Accessibility-first design with WCAG 2.1 compliance"
+    ],
+    "duration": "2 months",
+    "completedDate": "2024-05",
+    "status": "Completed",
+    "liveUrl": "https://weather-app-dun-gamma-77.vercel.app/",
+    "githubUrl": "https://github.com/praneeth-7606/weather_app",
+    "image": "/png/placeholder.png",
+    "metrics": {
+      "performance": "98/100 Lighthouse",
+      "users": "Active Users",
+      "uptime": "99.9%"
+    }
+  },
+  {
+    "id": "whatsapp-clone",
+    "title": "WhatsApp Clone - Real-time Chat Application",
+    "category": "Full-Stack Development",
+    "type": "Personal Project",
+    "description": "A full-featured WhatsApp clone with real-time messaging, group chats, user management, and modern responsive interface built with Next.js and Supabase.",
+    "longDescription": "Built a comprehensive real-time chat application replicating WhatsApp's core functionality. Features include instant message delivery with Supabase Realtime, group and direct chats, user authentication, persistent chat history, online status indicators, and advanced filtering. Implemented chat labels for organization, unread message counts, member management, and auto-generated avatars. The application includes automatic fallback to demo mode if database is unavailable, ensuring continuous functionality.",
+    "technologies": [
+      "Next.js 14",
+      "React 18",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "React Icons"
+    ],
+    "features": [
+      "Real-time messaging with instant delivery",
+      "Group and direct chat support",
+      "Secure user authentication with Supabase Auth",
+      "Persistent chat history across sessions",
+      "Real-time online status indicators",
+      "Chat labels with custom colors (Demo, Content, Signup, Internal)",
+      "Advanced filtering by type, labels, and search",
+      "Unread message count indicators",
+      "Member management for group chats",
+      "Auto-generated avatars with color coding",
+      "Demo mode with database fallback",
+      "Responsive design for all devices",
+      "TypeScript for full type safety"
+    ],
+    "technicalHighlights": [
+      "Supabase Realtime for instant message delivery",
+      "Row Level Security for data protection",
+      "Optimized state management with React Hooks",
+      "Efficient rendering with React 18 features",
+      "PostgreSQL database with complex relationships",
+      "Real-time subscriptions with automatic reconnection",
+      "TypeScript for enhanced code quality"
+    ],
+    "duration": "3 months",
+    "completedDate": "2024-08",
+    "status": "Completed",
+    "liveUrl": "https://whatsup-application-neaj.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606/whatsup_application",
+    "image": "/png/placeholder.png",
+    "metrics": {
+      "messages": "Real-time Delivery",
+      "latency": "<100ms",
+      "uptime": "99.9%"
+    }
+  },
+  {
+    "id": "insure-rag-frontend",
+    "title": "InsureRAG - AI Insurance Q&A (Frontend)",
+    "category": "AI/ML Frontend",
+    "type": "Personal Project",
+    "description": "Modern Next.js application for uploading insurance policies and asking complex questions using Retrieval-Augmented Generation (RAG) backend.",
+    "longDescription": "Developed a sophisticated frontend for an AI-powered insurance document analysis system. The application features an intuitive drag-and-drop interface for PDF and TXT uploads with real-time feedback, a conversational AI assistant for document queries, and a transparent sources tab showing exact text snippets used for answers. Implemented persistent user experience with automatic document list restoration on page load. Built with Next.js for optimal performance and SEO, utilizing server-side rendering and automatic code-splitting.",
+    "technologies": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Ant Design Icons",
+      "FastAPI Backend",
+      "Vercel"
+    ],
+    "features": [
+      "Intuitive drag-and-drop document upload",
+      "Support for PDF and TXT files",
+      "Real-time upload progress and feedback",
+      "Conversational AI chat interface",
+      "Loading states for smooth UX",
+      "Transparent sources tab with text snippets",
+      "Automatic document list restoration",
+      "Persistent user experience",
+      "Server-side rendering for performance",
+      "Responsive design with Tailwind CSS",
+      "Professional UI with Ant Design icons",
+      "Optimized image loading"
+    ],
+    "technicalHighlights": [
+      "Next.js SSR for faster initial load",
+      "File-system-based routing",
+      "Automatic code-splitting",
+      "Modular component architecture",
+      "Utility-first CSS with Tailwind",
+      "CI/CD pipeline with Vercel",
+      "Preview URLs for every commit",
+      "Environment variable management"
+    ],
+    "duration": "2 months",
+    "completedDate": "2024-10",
+    "status": "Completed",
+    "liveUrl": "https://rag-frontend-nine.vercel.app/",
+    "githubUrl": "https://github.com/praneeth-7606/RAG_FRONTEND",
+    "image": "/png/placeholder.png",
+    "metrics": {
+      "performance": "95/100 Lighthouse",
+      "loadTime": "<1.5s",
+      "seo": "100/100"
+    }
+  },
+  {
+    "id": "insure-rag-backend",
+    "title": "InsureRAG - AI Insurance Q&A (Backend)",
+    "category": "AI/ML Backend",
+    "type": "Personal Project",
+    "description": "Robust FastAPI backend powering a complete Retrieval-Augmented Generation (RAG) pipeline for insurance document analysis.",
+    "longDescription": "Built a comprehensive RAG backend service handling document ingestion, validation, processing, and AI-powered chat. Implemented AI-powered validation using LLM to verify insurance-related documents before processing. Developed complete RAG workflow with text extraction from PDFs and TXT files, intelligent chunking with overlap for context retention, vector embedding generation using Google's models, and persistent cloud-based Pinecone vector storage. The system retrieves relevant document chunks based on queries and uses Gemini LLM to generate accurate, context-aware answers.",
+    "technologies": [
+      "FastAPI",
+      "Python 3.10+",
+      "LangChain",
+      "Google Gemini-Pro",
+      "Pinecone",
+      "PyMuPDF",
+      "Langchain-Google-Genai",
+      "Render"
+    ],
+    "features": [
+      "Robust API endpoints for upload, health, and chat",
+      "AI-powered document validation",
+      "Reliable text extraction from PDF and TXT",
+      "Intelligent document chunking with overlap",
+      "Vector embedding generation with Google models",
+      "Persistent Pinecone vector database",
+      "Context-aware answer generation",
+      "Relevant document chunk retrieval",
+      "Insurance-specific document filtering",
+      "Error handling and validation",
+      "Cloud deployment on Render",
+      "Environment variable management"
+    ],
+    "technicalHighlights": [
+      "Complete RAG pipeline implementation",
+      "LangChain for orchestration",
+      "Google Gemini-Pro-Flash LLM",
+      "Google embedding-001 model",
+      "Pinecone vector database integration",
+      "PyMuPDF for PDF parsing",
+      "FastAPI for high-performance APIs",
+      "Asynchronous request handling"
+    ],
+    "duration": "2 months",
+    "completedDate": "2024-10",
+    "status": "Completed",
+    "liveUrl": "https://rag-backend-application-2.onrender.com",
+    "githubUrl": "https://github.com/praneeth-7606/RAG_BACKEND_APPLICATION",
+    "image": "/png/placeholder.png",
+    "metrics": {
+      "accuracy": "95%+ Answers",
+      "responseTime": "<3s",
+      "uptime": "99.5%"
+    }
+  },
+  {
+    "id": "hich-trip-app",
+    "title": "Hich Trip - Travel Planning Application",
+    "category": "Full-Stack Development",
+    "type": "Personal Project",
+    "description": "Modern travel planning application built with Next.js 15, featuring trip management, itinerary planning, and beautiful UI with Ant Design and Bootstrap.",
+    "longDescription": "Developed a comprehensive travel planning application using the latest Next.js 15 framework with React 19. The application provides users with tools to plan, organize, and manage their trips with an intuitive interface. Integrated Ant Design for professional UI components and Bootstrap for responsive layouts. Features include trip creation, itinerary management, destination exploration, and travel recommendations. Built with modern React patterns and optimized for performance with Next.js's latest features including server components and improved routing.",
+    "technologies": [
+      "Next.js 15.3.4",
+      "React 19",
+      "Ant Design 5.26",
+      "Bootstrap 5.3",
+      "React Bootstrap",
+      "Lucide React"
+    ],
+    "features": [
+      "Trip creation and management",
+      "Itinerary planning and organization",
+      "Destination exploration and search",
+      "Travel recommendations and suggestions",
+      "Responsive design with Bootstrap",
+      "Professional UI with Ant Design components",
+      "Modern icon library with Lucide React",
+      "Server-side rendering for optimal performance",
+      "Automatic font optimization with next/font",
+      "Fast page transitions and navigation",
+      "Mobile-first responsive design",
+      "Optimized for all devices"
+    ],
+    "technicalHighlights": [
+      "Next.js 15 with latest features",
+      "React 19 for enhanced performance",
+      "Server components for faster loading",
+      "Ant Design component library integration",
+      "Bootstrap responsive grid system",
+      "Geist font family optimization",
+      "Modern React patterns and hooks",
+      "Optimized build and deployment"
+    ],
+    "duration": "1.5 months",
+    "completedDate": "2025-01",
+    "status": "Completed",
+    "liveUrl": "https://hich-trip-app.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606/HICH_TRIP_APP",
+    "image": "/png/placeholder.png",
+    "metrics": {
+      "performance": "96/100 Lighthouse",
+      "framework": "Next.js 15",
+      "react": "React 19"
+    }
+  },
+  {
+    "id": "oodl-homepage",
+    "title": "OODL - Interactive 3D Homepage",
+    "category": "Frontend Development",
+    "type": "Personal Project",
+    "description": "Stunning interactive homepage featuring 3D graphics, animations, and modern UI built with Next.js, Three.js, and Framer Motion.",
+    "longDescription": "Created an impressive, interactive homepage with cutting-edge 3D graphics and animations. Leveraged Three.js and React Three Fiber to build immersive 3D experiences directly in the browser. Implemented smooth animations and transitions using Framer Motion for a polished, professional feel. Features include interactive 3D elements, particle effects with simplex noise, responsive design, and optimized performance. Built with TypeScript for type safety and maintainability. The application showcases advanced frontend development skills including WebGL rendering, 3D scene management, and performance optimization for complex graphics.",
+    "technologies": [
+      "Next.js 14",
+      "React 18",
+      "TypeScript",
+      "Three.js",
+      "React Three Fiber",
+      "React Three Drei",
+      "Framer Motion",
+      "Tailwind CSS"
+    ],
+    "features": [
+      "Interactive 3D graphics and animations",
+      "WebGL rendering with Three.js",
+      "Smooth animations with Framer Motion",
+      "Particle effects with simplex noise",
+      "Responsive 3D scenes for all devices",
+      "Headless UI components for accessibility",
+      "Toast notifications with react-hot-toast",
+      "Custom hooks with react-use",
+      "Optimized 3D performance",
+      "TypeScript for type safety",
+      "Tailwind CSS for styling",
+      "Modern component architecture"
+    ],
+    "technicalHighlights": [
+      "Three.js for 3D graphics rendering",
+      "React Three Fiber for React integration",
+      "React Three Drei for 3D helpers",
+      "Framer Motion for smooth animations",
+      "Simplex noise for particle effects",
+      "TypeScript for enhanced code quality",
+      "Tailwind merge for utility optimization",
+      "Performance optimization for 3D scenes",
+      "Responsive 3D viewport management",
+      "WebGL shader programming"
+    ],
+    "duration": "2 months",
+    "completedDate": "2024-12",
+    "status": "Completed",
+    "liveUrl": "https://oodl-homepage.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606/TASK_DEMO",
+    "image": "/png/placeholder.png",
+    "metrics": {
+      "3d": "Three.js Powered",
+      "animations": "Framer Motion",
+      "typescript": "Full Type Safety"
+    }
+  }
+]

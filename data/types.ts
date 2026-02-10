@@ -75,6 +75,7 @@ export interface Experience {
   title: string;
   company: string;
   companyLogo?: string;
+  location?: string;
   duration: string;
   startDate: string;
   endDate?: string;
