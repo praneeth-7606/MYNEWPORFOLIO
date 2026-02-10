@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FiExternalLink, 
-  FiGithub, 
-  FiCalendar, 
-  FiCheckCircle, 
-  FiAward, 
+import {
+  FiExternalLink,
+  FiGithub,
+  FiCalendar,
+  FiCheckCircle,
+  FiAward,
   FiTrendingUp,
   FiX,
   FiCode,
@@ -39,7 +39,7 @@ interface FreelancingProject {
     role: string;
   };
   metrics: {
-    [key: string]: string;
+    [key: string]: string | undefined;
   };
 }
 
@@ -88,11 +88,10 @@ export default function FreelancingShowcase() {
           <motion.button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-              selectedCategory === category
-                ? 'bg-gradient-to-r from-pink-500 via-purple-500 to-violet-600 text-white shadow-lg shadow-pink-500/50'
-                : 'bg-[#1b2c68a0] text-gray-300 hover:bg-[#1b2c68] border border-[#1b2c68]'
-            }`}
+            className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${selectedCategory === category
+              ? 'bg-gradient-to-r from-pink-500 via-purple-500 to-violet-600 text-white shadow-lg shadow-pink-500/50'
+              : 'bg-[#1b2c68a0] text-gray-300 hover:bg-[#1b2c68] border border-[#1b2c68]'
+              }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -121,7 +120,7 @@ export default function FreelancingShowcase() {
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0d1224] via-[#0d1224]/50 to-transparent opacity-80"></div>
-              
+
               {/* Status Badge */}
               <div className="absolute top-4 right-4">
                 <span className="px-4 py-2 bg-green-500/90 backdrop-blur-sm text-white text-xs font-bold rounded-full flex items-center gap-2 shadow-lg">
@@ -143,7 +142,7 @@ export default function FreelancingShowcase() {
               <h3 className="text-xl font-bold text-white mb-2 group-hover:text-pink-500 transition-colors">
                 {project.title}
               </h3>
-              
+
               <p className="text-gray-400 text-sm mb-4 flex items-center gap-2">
                 <FiUsers size={16} className="text-pink-500" />
                 {project.client}
@@ -191,7 +190,7 @@ export default function FreelancingShowcase() {
                   <FiAward size={18} />
                   View Details
                 </motion.button>
-                
+
                 {project.liveUrl && (
                   <motion.a
                     href={project.liveUrl}
@@ -267,20 +266,20 @@ export default function FreelancingShowcase() {
                     </div>
                     <p className="text-white font-bold">{selectedProject.duration}</p>
                   </div>
-                  
+
                   <div className="bg-[#1b2c68a0] p-4 rounded-xl border border-[#1b2c68]">
                     <div className="flex items-center gap-2 text-purple-500 mb-2">
                       <FiCalendar size={20} />
                       <p className="font-semibold">Completed</p>
                     </div>
                     <p className="text-white font-bold">
-                      {new Date(selectedProject.completedDate).toLocaleDateString('en-US', { 
-                        month: 'short', 
-                        year: 'numeric' 
+                      {new Date(selectedProject.completedDate).toLocaleDateString('en-US', {
+                        month: 'short',
+                        year: 'numeric'
                       })}
                     </p>
                   </div>
-                  
+
                   <div className="bg-[#1b2c68a0] p-4 rounded-xl border border-[#1b2c68]">
                     <div className="flex items-center gap-2 text-green-500 mb-2">
                       <FiCheckCircle size={20} />
@@ -359,7 +358,7 @@ export default function FreelancingShowcase() {
                       Client Testimonial
                     </h3>
                     <div className="bg-gradient-to-br from-[#1b2c68] to-[#162454] p-6 rounded-2xl border-2 border-[#1b2c68] relative">
-                      <div className="text-6xl text-pink-500/20 absolute top-4 left-4">"</div>
+                      <div className="text-6xl text-pink-500/20 absolute top-4 left-4">&quot;</div>
                       <p className="text-gray-300 italic mb-4 relative z-10 pl-8">
                         {selectedProject.testimonial.text}
                       </p>
@@ -391,7 +390,7 @@ export default function FreelancingShowcase() {
                       View Live Project
                     </motion.a>
                   )}
-                  
+
                   {selectedProject.githubUrl && (
                     <motion.a
                       href={selectedProject.githubUrl}

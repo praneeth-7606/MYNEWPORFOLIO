@@ -47,7 +47,7 @@ export default function CodeDisplay() {
           {/* Line 2 */}
           <div className="ml-8">
             <span className="text-white">name:</span>
-            <span className="text-gray-400 mx-1">'</span>
+            <span className="text-gray-400 mx-1">&apos;</span>
             <span className="text-amber-300">Praneeth Vedagiri</span>
             <span className="text-gray-400">',</span>
           </div>

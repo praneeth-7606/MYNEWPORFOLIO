@@ -46,7 +46,6 @@ export default function HeroSection() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
       },
     },
   };
@@ -77,7 +76,7 @@ export default function HeroSection() {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="block text-white">Hello, I'm</span>
+                <span className="block text-white">Hello, I&apos;m</span>
                 <span className="block mt-2 bg-gradient-to-r from-teal-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
                   {personalData.name}
                 </span>
@@ -90,7 +89,7 @@ export default function HeroSection() {
               className="h-16 flex items-center"
             >
               <h2 className="text-2xl md:text-3xl font-semibold">
-                <span className="text-white">I'm a </span>
+                <span className="text-white">I&apos;m a </span>
                 <motion.span
                   key={currentSpecialization}
                   initial={{ opacity: 0, y: 20 }}
