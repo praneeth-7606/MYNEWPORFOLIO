@@ -16,24 +16,25 @@ import {
   FiStar
 } from 'react-icons/fi';
 import Image from 'next/image';
-import freelancingData from '@/data/freelancing.json';
+import freelancingData from '@/data/freelancing-work.json';
 
 interface FreelancingProject {
   id: string;
   title: string;
-  client: string;
+  type: string;
   category: string;
   description: string;
   longDescription: string;
   technologies: string[];
   features: string[];
+  technicalHighlights?: string[];
   duration: string;
   completedDate: string;
   status: string;
   liveUrl: string;
   githubUrl: string;
   image: string;
-  testimonial: {
+  testimonial?: {
     text: string;
     author: string;
     role: string;
@@ -145,7 +146,7 @@ export default function FreelancingShowcase() {
 
               <p className="text-gray-400 text-sm mb-4 flex items-center gap-2">
                 <FiUsers size={16} className="text-pink-500" />
-                {project.client}
+                {project.type}
               </p>
 
               <p className="text-gray-300 text-sm mb-4 line-clamp-2">
@@ -234,7 +235,7 @@ export default function FreelancingShowcase() {
                   </h2>
                   <p className="text-white/90 flex items-center gap-2">
                     <FiUsers size={18} />
-                    {selectedProject.client}
+                    {selectedProject.type}
                   </p>
                 </div>
                 <button

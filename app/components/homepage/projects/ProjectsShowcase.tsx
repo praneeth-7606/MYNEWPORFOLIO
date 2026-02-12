@@ -18,10 +18,10 @@ export default function ProjectsShowcase() {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
   const filteredProjects = selectedCategory === 'all'
-    ? projectsData
-    : projectsData.filter((project: Project) => 
-        project.category.includes(selectedCategory as any)
-      );
+    ? projectsData as Project[]
+    : (projectsData as Project[]).filter((project: Project) =>
+      project.category.includes(selectedCategory as any)
+    );
 
   const getProjectIcon = (project: Project) => {
     if (project.award) return Award;
@@ -81,11 +81,10 @@ export default function ProjectsShowcase() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`group relative px-8 py-4 rounded-2xl text-sm font-semibold transition-all duration-300 ${
-                  selectedCategory === category.id
+                className={`group relative px-8 py-4 rounded-2xl text-sm font-semibold transition-all duration-300 ${selectedCategory === category.id
                     ? 'bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 text-white shadow-2xl shadow-purple-500/50 scale-105'
                     : 'bg-[#0a0d37] border border-[#1b2c68a0] text-gray-300 hover:border-purple-500/50 hover:text-white'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-2">
                   <Icon size={18} className={selectedCategory === category.id ? 'animate-pulse' : ''} />
@@ -109,7 +108,7 @@ export default function ProjectsShowcase() {
             {filteredProjects.map((project: Project, index: number) => {
               const ProjectIcon = getProjectIcon(project);
               const isHovered = hoveredProject === project.id;
-              
+
               return (
                 <motion.div
                   key={project.id}
@@ -124,7 +123,7 @@ export default function ProjectsShowcase() {
                 >
                   {/* Glow Effect */}
                   <div className={`absolute -inset-1 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500`} />
-                  
+
                   {/* Card */}
                   <div className="relative h-full bg-[#0a0d37] border border-[#1b2c68a0] rounded-3xl p-8 overflow-hidden group-hover:border-purple-500/50 transition-all duration-500">
                     {/* Background Pattern */}
@@ -139,7 +138,7 @@ export default function ProjectsShowcase() {
                         <div className={`w-14 h-14 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                           <ProjectIcon size={28} className="text-white" />
                         </div>
-                        
+
                         {project.award && (
                           <motion.div
                             initial={{ scale: 0 }}

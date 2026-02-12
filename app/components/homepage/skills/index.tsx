@@ -23,15 +23,15 @@ export default function SkillsSection() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
   const filteredSkills = selectedCategory === 'all'
-    ? skillsData
-    : skillsData.filter((skill: Skill) => skill.category === selectedCategory);
+    ? skillsData as Skill[]
+    : (skillsData as Skill[]).filter((skill: Skill) => skill.category === selectedCategory);
 
   return (
     <section id="skills" className="py-20 lg:py-32 relative overflow-hidden">
       {/* Animated decorative elements */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-      
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -83,19 +83,17 @@ export default function SkillsSection() {
                 transition={{ delay: index * 0.08, type: "spring" }}
                 whileHover={{ scale: 1.08, y: -4 }}
                 whileTap={{ scale: 0.95 }}
-                className={`group relative px-8 py-4 rounded-2xl text-sm font-bold transition-all duration-300 ${
-                  selectedCategory === category.id
-                    ? 'text-white shadow-2xl'
-                    : 'text-gray-300 hover:text-white'
-                }`}
+                className={`group relative px-8 py-4 rounded-2xl text-sm font-bold transition-all duration-300 ${selectedCategory === category.id
+                  ? 'text-white shadow-2xl'
+                  : 'text-gray-300 hover:text-white'
+                  }`}
               >
                 {/* Animated background */}
-                <div className={`absolute inset-0 rounded-2xl transition-all duration-300 ${
-                  selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 opacity-100'
-                    : 'bg-gradient-to-r from-teal-500/10 via-cyan-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100'
-                }`} />
-                
+                <div className={`absolute inset-0 rounded-2xl transition-all duration-300 ${selectedCategory === category.id
+                  ? 'bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 opacity-100'
+                  : 'bg-gradient-to-r from-teal-500/10 via-cyan-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100'
+                  }`} />
+
                 {/* Glow effect */}
                 {selectedCategory === category.id && (
                   <motion.div
@@ -104,7 +102,7 @@ export default function SkillsSection() {
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-                
+
                 {/* Content */}
                 <span className="relative z-10 flex items-center gap-3">
                   <Icon size={20} className={selectedCategory === category.id ? 'animate-pulse' : ''} />
@@ -146,7 +144,7 @@ export default function SkillsSection() {
                 key={skill.name}
                 initial={{ opacity: 0, scale: 0.5, rotateY: -90 }}
                 animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                transition={{ 
+                transition={{
                   delay: index * 0.05,
                   type: "spring",
                   stiffness: 200,
@@ -159,24 +157,20 @@ export default function SkillsSection() {
                 {/* Card Container */}
                 <motion.div
                   whileHover={{ y: -8, rotateY: 5 }}
-                  className="relative h-full p-6 rounded-3xl bg-gradient-to-br from-dark-card/90 to-dark-card/50 backdrop-blur-xl border border-teal-500/20 hover:border-cyan-500/60 transition-all duration-500 overflow-hidden"
-                  style={{ transformStyle: 'preserve-3d' }}
+                  className="relative h-full p-6 rounded-3xl bg-gradient-to-br from-dark-card/90 to-dark-card/50 backdrop-blur-xl border border-teal-500/20 hover:border-cyan-500/60 transition-all duration-500 overflow-hidden [transform-style:preserve-3d]"
                 >
                   {/* Animated gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-teal-500/0 via-cyan-500/0 to-emerald-500/0 group-hover:from-teal-500/10 group-hover:via-cyan-500/10 group-hover:to-emerald-500/10 transition-all duration-500" />
-                  
+
                   {/* Glow effect on hover */}
                   <motion.div
-                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background: 'radial-gradient(circle at center, rgba(6, 182, 212, 0.15), transparent 70%)',
-                    }}
+                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 [background:radial-gradient(circle_at_center,rgba(6,182,212,0.15),transparent_70%)]"
                   />
 
                   {/* Animated corner accents */}
                   <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-teal-500/20 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
+
                   {/* Content */}
                   <div className="relative z-10 flex flex-col items-center text-center space-y-4">
                     {/* Icon with 3D effect */}
@@ -202,12 +196,12 @@ export default function SkillsSection() {
                         )}
                       </div>
                     </motion.div>
-                    
+
                     {/* Name with gradient on hover */}
                     <h3 className="text-sm font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-teal-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300">
                       {skill.name}
                     </h3>
-                    
+
                     {/* Animated proficiency bar */}
                     <div className="w-full space-y-2">
                       <div className="relative h-2 bg-dark-bg/80 rounded-full overflow-hidden">
@@ -265,7 +259,7 @@ export default function SkillsSection() {
                               {skill.yearsOfExperience} years experience
                             </p>
                             <p className="text-xs text-emerald-400 font-bold">
-                              {skill.projectCount} projects completed
+                              {skill.projectsCompleted} projects completed
                             </p>
                           </div>
                         </div>
@@ -308,10 +302,10 @@ export default function SkillsSection() {
                 {/* Animated gradient border */}
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 <div className="absolute inset-[1px] rounded-3xl bg-dark-card" />
-                
+
                 {/* Glow effect */}
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${stat.gradient} blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500`} />
-                
+
                 {/* Content */}
                 <div className="relative z-10 text-center space-y-3">
                   <motion.div

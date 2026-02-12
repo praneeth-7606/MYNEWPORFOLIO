@@ -85,9 +85,9 @@ export default function SkillCard({ skill, index }: SkillCardProps) {
         {/* Hover Details */}
         <motion.div
           initial={{ opacity: 0, height: 0 }}
-          animate={{ 
-            opacity: isHovered ? 1 : 0, 
-            height: isHovered ? 'auto' : 0 
+          animate={{
+            opacity: isHovered ? 1 : 0,
+            height: isHovered ? 'auto' : 0
           }}
           transition={{ duration: 0.3 }}
           className="mt-3 pt-3 border-t border-[#1b2c68a0] space-y-1 overflow-hidden"
@@ -95,9 +95,9 @@ export default function SkillCard({ skill, index }: SkillCardProps) {
           <p className="text-xs text-gray-400">
             <span className="text-[#16f2b3]">Experience:</span> {skill.yearsOfExperience} years
           </p>
-          {skill.projectCount && (
+          {skill.projectsCompleted && (
             <p className="text-xs text-gray-400">
-              <span className="text-[#16f2b3]">Projects:</span> {skill.projectCount}+
+              <span className="text-[#16f2b3]">Projects:</span> {skill.projectsCompleted}+
             </p>
           )}
         </motion.div>

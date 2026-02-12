@@ -19,9 +19,9 @@ export default function ProjectsSection() {
 
   const filteredProjects = selectedCategory === 'all'
     ? projectsData
-    : (projectsData as Project[]).filter((project) => 
-        project.category.includes(selectedCategory as any)
-      );
+    : (projectsData as Project[]).filter((project) =>
+      project.category.includes(selectedCategory as any)
+    );
 
   const getProjectIcon = (project: Project) => {
     if (project.id === 'ebv-system') return Database;
@@ -47,8 +47,8 @@ export default function ProjectsSection() {
   };
 
   // First 4 are featured (priority projects)
-  const featuredProjects = filteredProjects.slice(0, 4);
-  const otherProjects = filteredProjects.slice(4);
+  const featuredProjects = filteredProjects.slice(0, 4) as Project[];
+  const otherProjects = filteredProjects.slice(4) as Project[];
 
   return (
     <section id="projects" className="py-20 lg:py-32 relative overflow-hidden">
@@ -104,11 +104,10 @@ export default function ProjectsSection() {
                 onClick={() => setSelectedCategory(category.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`group relative px-6 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 ${
-                  selectedCategory === category.id
+                className={`group relative px-6 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 ${selectedCategory === category.id
                     ? 'text-white'
                     : 'bg-[#0a0d37] border border-[#1b2c68a0] text-gray-300 hover:border-purple-500/50 hover:text-white'
-                }`}
+                  }`}
               >
                 {selectedCategory === category.id && (
                   <motion.div
@@ -143,7 +142,7 @@ export default function ProjectsSection() {
               {(featuredProjects as Project[]).map((project, index) => {
                 const ProjectIcon = getProjectIcon(project);
                 const gradient = getProjectGradient(index);
-                
+
                 return (
                   <motion.div
                     key={project.id}
@@ -155,7 +154,7 @@ export default function ProjectsSection() {
                   >
                     {/* Mega Glow */}
                     <div className={`absolute -inset-1 bg-gradient-to-r ${gradient} rounded-3xl blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500`} />
-                    
+
                     {/* Card */}
                     <div className="relative h-full bg-gradient-to-br from-[#0a0d37] to-[#1a1f4a] rounded-3xl p-8 border border-[#1b2c68a0] hover:border-purple-500/50 transition-all duration-500 overflow-hidden">
                       {/* Background Pattern */}
@@ -174,7 +173,7 @@ export default function ProjectsSection() {
                           >
                             <ProjectIcon size={32} className="text-white" />
                           </motion.div>
-                          
+
                           {project.award && (
                             <motion.div
                               animate={{ scale: [1, 1.1, 1] }}
@@ -288,7 +287,7 @@ export default function ProjectsSection() {
               {otherProjects.map((project: Project, index: number) => {
                 const ProjectIcon = getProjectIcon(project);
                 const gradient = getProjectGradient(index + 4);
-                
+
                 return (
                   <motion.div
                     key={project.id}
@@ -301,7 +300,7 @@ export default function ProjectsSection() {
                   >
                     {/* Glow */}
                     <div className={`absolute -inset-0.5 bg-gradient-to-r ${gradient} rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-                    
+
                     {/* Card */}
                     <div className="relative h-full bg-[#0a0d37] border border-[#1b2c68a0] rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
                       {/* Icon */}
@@ -384,10 +383,10 @@ export default function ProjectsSection() {
 // Enhanced Project Detail Modal
 function ProjectDetailModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const ProjectIcon = project.id === 'ebv-system' ? Database :
-                      project.id === 'bank-statement-analyzer' ? TrendingUp :
-                      project.id === 'scribex-medical' ? FileText :
-                      project.id === 'resume-automation' ? Award :
-                      project.category.includes('genai') ? Brain : Code;
+    project.id === 'bank-statement-analyzer' ? TrendingUp :
+      project.id === 'scribex-medical' ? FileText :
+        project.id === 'resume-automation' ? Award :
+          project.category.includes('genai') ? Brain : Code;
 
   return (
     <motion.div

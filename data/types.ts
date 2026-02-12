@@ -49,6 +49,11 @@ export interface Project {
   videoUrl?: string;
   demoType?: 'live' | 'video' | 'images';
   architecture?: string;
+  status?: string;
+  award?: string;
+  date?: string;
+  company?: string;
+  year?: string;
   aiPipeline?: {
     llmProvider: string;
     vectorDb?: string;

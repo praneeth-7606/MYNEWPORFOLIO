@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FiExternalLink, 
-  FiGithub, 
-  FiCalendar, 
-  FiCheckCircle, 
+import {
+  FiExternalLink,
+  FiGithub,
+  FiCalendar,
+  FiCheckCircle,
   FiCode,
   FiX,
   FiAward,
@@ -48,8 +48,8 @@ export default function FreelancingPage() {
   const categories = ['All', ...new Set(freelancingWork.map(p => p.category))];
 
   const filteredProjects = selectedCategory === 'All'
-    ? freelancingWork
-    : freelancingWork.filter(p => p.category === selectedCategory);
+    ? freelancingWork as unknown as Project[]
+    : (freelancingWork as unknown as Project[]).filter(p => p.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0d1224] via-[#0a0e1a] to-[#0d1224]">
@@ -72,14 +72,14 @@ export default function FreelancingPage() {
                 🚀 Freelancing Portfolio
               </span>
             </div>
-            
+
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               Building <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-violet-600 bg-clip-text text-transparent">Exceptional</span>
               <br />Digital Experiences
             </h1>
-            
+
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Showcasing my journey in full-stack development, AI/ML integration, and modern web applications. 
+              Showcasing my journey in full-stack development, AI/ML integration, and modern web applications.
               Each project represents a commitment to quality, innovation, and user-centric design.
             </p>
 
@@ -120,11 +120,10 @@ export default function FreelancingPage() {
               <motion.button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-8 py-4 rounded-xl font-bold transition-all duration-300 text-base ${
-                  selectedCategory === category
-                    ? 'bg-gradient-to-r from-pink-500 via-purple-500 to-violet-600 text-white shadow-xl shadow-pink-500/50 scale-105'
-                    : 'bg-[#1b2c68a0] text-gray-300 hover:bg-[#1b2c68] border-2 border-[#1b2c68] hover:border-pink-500/50'
-                }`}
+                className={`px-8 py-4 rounded-xl font-bold transition-all duration-300 text-base ${selectedCategory === category
+                  ? 'bg-gradient-to-r from-pink-500 via-purple-500 to-violet-600 text-white shadow-xl shadow-pink-500/50 scale-105'
+                  : 'bg-[#1b2c68a0] text-gray-300 hover:bg-[#1b2c68] border-2 border-[#1b2c68] hover:border-pink-500/50'
+                  }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -153,7 +152,7 @@ export default function FreelancingPage() {
                     <FiCode className="text-9xl text-pink-500/20" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d1224] via-[#0d1224]/50 to-transparent"></div>
-                  
+
                   {/* Status Badge */}
                   <div className="absolute top-6 right-6">
                     <span className="px-5 py-2.5 bg-green-500/90 backdrop-blur-sm text-white text-sm font-bold rounded-full flex items-center gap-2 shadow-xl">
@@ -224,7 +223,7 @@ export default function FreelancingPage() {
                       <FiLayers size={20} />
                       View Details
                     </motion.button>
-                    
+
                     {project.liveUrl && (
                       <motion.a
                         href={project.liveUrl}
@@ -311,20 +310,20 @@ export default function FreelancingPage() {
                     </div>
                     <p className="text-white font-bold text-xl">{selectedProject.duration}</p>
                   </div>
-                  
+
                   <div className="bg-[#1b2c68a0] p-6 rounded-2xl border-2 border-[#1b2c68]">
                     <div className="flex items-center gap-3 text-purple-500 mb-3">
                       <FiCalendar size={24} />
                       <p className="font-bold text-lg">Completed</p>
                     </div>
                     <p className="text-white font-bold text-xl">
-                      {new Date(selectedProject.completedDate).toLocaleDateString('en-US', { 
-                        month: 'short', 
-                        year: 'numeric' 
+                      {new Date(selectedProject.completedDate).toLocaleDateString('en-US', {
+                        month: 'short',
+                        year: 'numeric'
                       })}
                     </p>
                   </div>
-                  
+
                   <div className="bg-[#1b2c68a0] p-6 rounded-2xl border-2 border-[#1b2c68]">
                     <div className="flex items-center gap-3 text-green-500 mb-3">
                       <FiCheckCircle size={24} />
@@ -435,7 +434,7 @@ export default function FreelancingPage() {
                       View Live Project
                     </motion.a>
                   )}
-                  
+
                   {selectedProject.githubUrl && (
                     <motion.a
                       href={selectedProject.githubUrl}
