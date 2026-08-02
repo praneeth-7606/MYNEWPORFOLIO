@@ -1,5 +1,76 @@
 [
   {
+    "id": "equity-intelligence",
+    "title": "Equity Intelligence",
+    "date": "2025",
+    "status": "Active Development",
+    "description": "Full-stack, AI-assisted platform for Indian equity portfolio analytics with a multi-agent LangGraph backend, deterministic P&L/dividend engines, and a built-in observability system that prices every LLM call down to the token in real time.",
+    "longDescription": "Equity Intelligence validates Excel brokerage statements, reconstructs chronological holdings, and runs deterministic Python logic for P&L, Indian delivery charges, and dividend eligibility, backed by a supervisor-routed LangGraph multi-agent system (Portfolio, P&L, Dividend, and Stock Analysis agents) with a resilient Mistral to Grok/Groq to Gemini provider chain. The standout piece is a custom-built cost and observability engine: a lightweight AgentTracer instruments every workflow step, tool call, and LLM invocation with latency and token counts, prices each LLM call against a per-model USD/1M-token rate table, and persists the full trace to MongoDB after the response is already sent so tracking adds zero user-facing latency. A 10-panel Developer Dashboard surfaces live and historical traces, per-tool and per-agent stats, error breakdowns, and a dedicated cost view with daily/monthly/all-time spend plus per-user and per-agent cost breakdowns, all computed through MongoDB aggregation pipelines.",
+    "category": [
+      "genai",
+      "fullstack"
+    ],
+    "techStack": [
+      "FastAPI",
+      "LangGraph",
+      "LangChain",
+      "MongoDB",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Mistral AI",
+      "Yahoo Finance API"
+    ],
+    "features": [
+      "Custom cost-tracking engine: every LLM call logged with provider, model, input/output tokens, and latency, priced in real time against a per-model USD/1M-token rate table",
+      "10-panel Developer Dashboard (Live, History, Trace, Tools, LLMs, Agents, Errors, Cost, Performance, Replay) built on MongoDB aggregation pipelines for daily/monthly/all-time spend and per-user, per-agent cost breakdowns",
+      "Supervisor-routed LangGraph multi-agent system: Portfolio, P&L, Dividend, and Stock Analysis specialist agents",
+      "Deterministic Python P&L and Indian brokerage delivery-charge calculations, not LLM-estimated",
+      "Three-way LLM provider failover (Mistral to Grok/Groq to Gemini) so a single missing or rate-limited key never takes the app down",
+      "Privacy-masking layer redacts emails, PANs, and account/demat identifiers before any text reaches an LLM or a log line",
+      "Multi-file projects with per-file chat sessions, JWT auth, and persisted conversation history"
+    ],
+    "challenges": "Pricing real LLM spend across three interchangeable providers with different token rates, without adding latency to the user-facing request path or bolting on a third-party observability vendor.",
+    "solutions": "Built an in-memory AgentTracer that every agent node writes to inline; cost is computed synchronously from a static rate table matched on model name, and the full trace document is persisted to MongoDB asynchronously after the HTTP response is already returned, so cost tracking is effectively free from the user's perspective.",
+    "results": "Every query is fully priced and auditable after the fact — daily/monthly/all-time spend, cost broken down by agent and by user, and a full step-by-step replay of the exact tool and LLM calls behind any single answer, all from a live dashboard with no external logging infrastructure.",
+    "metrics": [
+      {
+        "label": "Cost Visibility",
+        "value": "Per-Token",
+        "icon": "dollar-sign"
+      },
+      {
+        "label": "Specialist Agents",
+        "value": "5",
+        "icon": "cpu"
+      },
+      {
+        "label": "LLM Providers",
+        "value": "3-Way Failover",
+        "icon": "shuffle"
+      }
+    ],
+    "images": [
+      "/image/travel.jpg"
+    ],
+    "liveUrl": "",
+    "githubUrl": "https://github.com/praneeth-7606/EQUITYINTELLIGENCE",
+    "videoUrl": "https://drive.google.com/file/d/1ewYySuQ2O5yPHXtSdWMXKZCzMm9uJR0s/view?usp=drive_link",
+    "demoType": "video",
+    "architecture": "React (Vite) → FastAPI → LangGraph Supervisor → Specialist Agents → MongoDB / Yahoo Finance",
+    "aiPipeline": {
+      "llmProvider": "Mistral (primary) → Grok/Groq → Gemini",
+      "framework": "LangGraph",
+      "apis": [
+        "Mistral API",
+        "xAI/Groq API",
+        "Gemini API",
+        "Yahoo Finance"
+      ]
+    },
+    "year": "2025"
+  },
+  {
     "id": "ebv-system",
     "title": "Electronic Benefit Verification (EBV) System",
     "date": "Oct 2024 - Present",
