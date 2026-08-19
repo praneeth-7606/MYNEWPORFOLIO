@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FiExternalLink,
@@ -48,11 +48,34 @@ export default function FreelancingShowcase() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedProject, setSelectedProject] = useState<FreelancingProject | null>(null);
 
-  const categories = ['All', ...new Set(freelancingData.map(p => p.category))];
+  // Module-level (not rebuilt per render): opening/closing the modal or switching
+  // a filter must not hand the category buttons a fresh array identity.
+  const categories = useMemo(
+    () => ['All', ...new Set(freelancingData.map(p => p.category))],
+    []
+  );
 
-  const filteredProjects = selectedCategory === 'All'
-    ? freelancingData
-    : freelancingData.filter(p => p.category === selectedCategory);
+  // Stable array identity across modal open/close so memoized cards skip re-renders
+  // unless the filter actually changes.
+  const filteredProjects = useMemo(
+    () =>
+      selectedCategory === 'All'
+        ? freelancingData
+        : freelancingData.filter(p => p.category === selectedCategory),
+    [selectedCategory]
+  );
+
+  const handleSelectProject = useCallback((project: FreelancingProject) => {
+    setSelectedProject(project);
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setSelectedProject(null);
+  }, []);
+
+  const handleSelectCategory = useCallback((category: string) => {
+    setSelectedCategory(category);
+  }, []);
 
   return (
     <section id="freelancing" className="relative z-50 my-12 lg:my-24 px-4 sm:px-6 lg:px-8">
@@ -88,7 +111,7 @@ export default function FreelancingShowcase() {
         {categories.map((category) => (
           <motion.button
             key={category}
-            onClick={() => setSelectedCategory(category)}
+            onClick={() => handleSelectCategory(category)}
             className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${selectedCategory === category
               ? 'bg-gradient-to-r from-pink-500 via-purple-500 to-violet-600 text-white shadow-lg shadow-pink-500/50'
               : 'bg-[#1b2c68a0] text-gray-300 hover:bg-[#1b2c68] border border-[#1b2c68]'
@@ -104,109 +127,12 @@ export default function FreelancingShowcase() {
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {filteredProjects.map((project, index) => (
-          <motion.div
+          <FreelancingCard
             key={project.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group relative bg-gradient-to-br from-[#0d1224] to-[#0a0e1a] border-2 border-[#1b2c68a0] rounded-2xl overflow-hidden hover:border-pink-500/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-pink-500/20"
-          >
-            {/* Project Image */}
-            <div className="relative h-56 overflow-hidden">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d1224] via-[#0d1224]/50 to-transparent opacity-80"></div>
-
-              {/* Status Badge */}
-              <div className="absolute top-4 right-4">
-                <span className="px-4 py-2 bg-green-500/90 backdrop-blur-sm text-white text-xs font-bold rounded-full flex items-center gap-2 shadow-lg">
-                  <FiCheckCircle size={14} />
-                  {project.status}
-                </span>
-              </div>
-
-              {/* Category Badge */}
-              <div className="absolute top-4 left-4">
-                <span className="px-4 py-2 bg-purple-500/90 backdrop-blur-sm text-white text-xs font-bold rounded-full shadow-lg">
-                  {project.category}
-                </span>
-              </div>
-            </div>
-
-            {/* Project Content */}
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-pink-500 transition-colors">
-                {project.title}
-              </h3>
-
-              <p className="text-gray-400 text-sm mb-4 flex items-center gap-2">
-                <FiUsers size={16} className="text-pink-500" />
-                {project.type}
-              </p>
-
-              <p className="text-gray-300 text-sm mb-4 line-clamp-2">
-                {project.description}
-              </p>
-
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.slice(0, 3).map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 bg-[#1b2c68] text-[#16f2b3] text-xs rounded-lg font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
-                {project.technologies.length > 3 && (
-                  <span className="px-3 py-1 bg-[#1b2c68] text-gray-400 text-xs rounded-lg font-medium">
-                    +{project.technologies.length - 3} more
-                  </span>
-                )}
-              </div>
-
-              {/* Metrics */}
-              <div className="grid grid-cols-2 gap-3 mb-4 pt-4 border-t border-[#1b2c68]">
-                {Object.entries(project.metrics).slice(0, 2).map(([key, value]) => (
-                  <div key={key} className="text-center">
-                    <p className="text-xs text-gray-400 capitalize">{key}</p>
-                    <p className="text-sm font-bold text-white">{value}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex gap-3">
-                <motion.button
-                  onClick={() => setSelectedProject(project)}
-                  className="flex-1 bg-gradient-to-r from-pink-500 to-violet-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-pink-500/50 transition-all flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <FiAward size={18} />
-                  View Details
-                </motion.button>
-
-                {project.liveUrl && (
-                  <motion.a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-[#1b2c68] text-white rounded-xl hover:bg-[#1b2c68]/80 transition-all"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <FiExternalLink size={20} />
-                  </motion.a>
-                )}
-              </div>
-            </div>
-          </motion.div>
+            project={project}
+            index={index}
+            onSelect={handleSelectProject}
+          />
         ))}
       </div>
 
@@ -218,7 +144,7 @@ export default function FreelancingShowcase() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-            onClick={() => setSelectedProject(null)}
+            onClick={handleCloseModal}
           >
             <motion.div
               initial={{ scale: 0.9, y: 20 }}
@@ -239,7 +165,7 @@ export default function FreelancingShowcase() {
                   </p>
                 </div>
                 <button
-                  onClick={() => setSelectedProject(null)}
+                  onClick={handleCloseModal}
                   className="text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
                 >
                   <FiX size={24} />
@@ -414,3 +340,119 @@ export default function FreelancingShowcase() {
     </section>
   );
 }
+
+interface FreelancingCardProps {
+  project: FreelancingProject;
+  index: number;
+  onSelect: (project: FreelancingProject) => void;
+}
+
+// memo + stable props: opening the modal (or switching a category filter) re-renders
+// the grid in the parent, but these cards bail out unless their own project/onSelect
+// actually changed.
+const FreelancingCard = memo(function FreelancingCard({ project, index, onSelect }: FreelancingCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group relative bg-gradient-to-br from-[#0d1224] to-[#0a0e1a] border-2 border-[#1b2c68a0] rounded-2xl overflow-hidden hover:border-pink-500/50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-pink-500/20"
+    >
+      {/* Project Image */}
+      <div className="relative h-56 overflow-hidden">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1224] via-[#0d1224]/50 to-transparent opacity-80"></div>
+
+        {/* Status Badge */}
+        <div className="absolute top-4 right-4">
+          <span className="px-4 py-2 bg-green-500/90 backdrop-blur-sm text-white text-xs font-bold rounded-full flex items-center gap-2 shadow-lg">
+            <FiCheckCircle size={14} />
+            {project.status}
+          </span>
+        </div>
+
+        {/* Category Badge */}
+        <div className="absolute top-4 left-4">
+          <span className="px-4 py-2 bg-purple-500/90 backdrop-blur-sm text-white text-xs font-bold rounded-full shadow-lg">
+            {project.category}
+          </span>
+        </div>
+      </div>
+
+      {/* Project Content */}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-pink-500 transition-colors">
+          {project.title}
+        </h3>
+
+        <p className="text-gray-400 text-sm mb-4 flex items-center gap-2">
+          <FiUsers size={16} className="text-pink-500" />
+          {project.type}
+        </p>
+
+        <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+          {project.description}
+        </p>
+
+        {/* Technologies */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.technologies.slice(0, 3).map((tech, idx) => (
+            <span
+              key={idx}
+              className="px-3 py-1 bg-[#1b2c68] text-[#16f2b3] text-xs rounded-lg font-medium"
+            >
+              {tech}
+            </span>
+          ))}
+          {project.technologies.length > 3 && (
+            <span className="px-3 py-1 bg-[#1b2c68] text-gray-400 text-xs rounded-lg font-medium">
+              +{project.technologies.length - 3} more
+            </span>
+          )}
+        </div>
+
+        {/* Metrics */}
+        <div className="grid grid-cols-2 gap-3 mb-4 pt-4 border-t border-[#1b2c68]">
+          {Object.entries(project.metrics).slice(0, 2).map(([key, value]) => (
+            <div key={key} className="text-center">
+              <p className="text-xs text-gray-400 capitalize">{key}</p>
+              <p className="text-sm font-bold text-white">{value}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex gap-3">
+          <motion.button
+            onClick={() => onSelect(project)}
+            className="flex-1 bg-gradient-to-r from-pink-500 to-violet-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-pink-500/50 transition-all flex items-center justify-center gap-2"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <FiAward size={18} />
+            View Details
+          </motion.button>
+
+          {project.liveUrl && (
+            <motion.a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-[#1b2c68] text-white rounded-xl hover:bg-[#1b2c68]/80 transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FiExternalLink size={20} />
+            </motion.a>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+});

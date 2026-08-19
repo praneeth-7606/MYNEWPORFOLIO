@@ -5,6 +5,35 @@ import { useRef } from 'react';
 import experienceData from '@/data/experience.json';
 import { Experience } from '@/data/types';
 import { Briefcase, Calendar, Trophy, Code2, MapPin, TrendingUp, Target, Rocket } from 'lucide-react';
+import { useInViewportFlag } from '@/app/components/helper/use-in-viewport';
+
+// Hoisted lookups: these were rebuilt as closures on every render, and each one is
+// called ~10x per experience card while assembling className strings.
+const TYPE_COLORS: Record<string, string> = {
+  fulltime: 'from-green-500 to-emerald-500',
+  internship: 'from-blue-500 to-cyan-500',
+  freelance: 'from-purple-500 to-pink-500',
+};
+const TYPE_ICONS: Record<string, string> = {
+  fulltime: '💼',
+  internship: '🎓',
+  freelance: '🚀',
+};
+const TYPE_LABELS: Record<string, string> = {
+  fulltime: 'Full-Time',
+  internship: 'Internship',
+  freelance: 'Freelance',
+};
+
+const getTypeColor = (type: string) => TYPE_COLORS[type] ?? 'from-gray-500 to-gray-600';
+const getTypeIcon = (type: string) => TYPE_ICONS[type] ?? '💻';
+
+const summaryStats = [
+  { icon: <Target size={32} />, value: `${experienceData.length}`, label: 'Roles', color: 'from-violet-500 to-purple-500' },
+  { icon: <Trophy size={32} />, value: '15+', label: 'Achievements', color: 'from-purple-500 to-fuchsia-500' },
+  { icon: <Rocket size={32} />, value: '25+', label: 'Projects', color: 'from-fuchsia-500 to-pink-500' },
+  { icon: <TrendingUp size={32} />, value: '100%', label: 'Success', color: 'from-pink-500 to-rose-500' },
+];
 
 export default function ExperienceSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,26 +42,16 @@ export default function ExperienceSection() {
     offset: ["start end", "end start"]
   });
 
+  // Parallax for the two background orbs only. The content wrapper used to carry a
+  // scroll-linked `opacity` transform as well, which pushed the whole section --
+  // every card, every run of text -- onto its own composited layer and repainted
+  // it on every scroll frame. It is a one-shot fade-in now.
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const yInverse = useTransform(scrollYProgress, [0, 1], [-100, 100]);
 
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case 'fulltime': return 'from-green-500 to-emerald-500';
-      case 'internship': return 'from-blue-500 to-cyan-500';
-      case 'freelance': return 'from-purple-500 to-pink-500';
-      default: return 'from-gray-500 to-gray-600';
-    }
-  };
-
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case 'fulltime': return '💼';
-      case 'internship': return '🎓';
-      case 'freelance': return '🚀';
-      default: return '💻';
-    }
-  };
+  // Same node, second job: parks this section's decorative CSS animations while
+  // it is off-screen.
+  useInViewportFlag(containerRef);
 
   return (
     <section ref={containerRef} id="experience" className="py-20 lg:py-32 relative overflow-hidden bg-gradient-to-b from-dark-bg via-dark-bg/95 to-dark-bg">
@@ -43,12 +62,18 @@ export default function ExperienceSection() {
           className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-violet-500/20 to-purple-500/20 rounded-full blur-3xl"
         />
         <motion.div 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [-100, 100]) }}
+          style={{ y: yInverse }}
           className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl"
         />
       </div>
 
-      <motion.div style={{ opacity }} className="max-w-7xl mx-auto px-6 relative z-10">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5 }}
+        className="max-w-7xl mx-auto px-6 relative z-10"
+      >
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -65,18 +90,7 @@ export default function ExperienceSection() {
             className="inline-block mb-8"
           >
             <div className="relative">
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 180, 360]
-                }}
-                transition={{ 
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="absolute inset-0 bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 rounded-full blur-3xl opacity-50"
-              />
+              <div className="anim-blob absolute inset-0 bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 rounded-full blur-3xl opacity-50" />
               <Briefcase className="relative text-violet-400" size={90} strokeWidth={1.5} />
             </div>
           </motion.div>
@@ -126,17 +140,8 @@ export default function ExperienceSection() {
                       className="relative"
                     >
                       {/* Pulsing ring */}
-                      <motion.div
-                        animate={{ 
-                          scale: [1, 1.5, 1],
-                          opacity: [0.5, 0, 0.5]
-                        }}
-                        transition={{ 
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                        className={`absolute inset-0 rounded-full bg-gradient-to-r ${getTypeColor(exp.type)} blur-md`}
+                      <span
+                        className={`anim-particle absolute inset-0 rounded-full bg-gradient-to-r ${getTypeColor(exp.type)} blur-md`}
                       />
                       
                       {/* Main dot */}
@@ -157,7 +162,7 @@ export default function ExperienceSection() {
                       <div className={`absolute inset-0 bg-gradient-to-br ${getTypeColor(exp.type)} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500 rounded-3xl`} />
                       
                       {/* Main Card */}
-                      <div className="relative bg-gradient-to-br from-dark-card/90 to-dark-card/50 backdrop-blur-xl border border-white/10 group-hover:border-white/30 rounded-3xl overflow-hidden transition-all duration-500">
+                      <div className="relative bg-gradient-to-br from-dark-card to-dark-card/80 border border-white/10 group-hover:border-white/30 rounded-3xl overflow-hidden transition-all duration-500">
                         {/* Top Gradient Bar */}
                         <div className={`h-2 bg-gradient-to-r ${getTypeColor(exp.type)}`} />
                         
@@ -175,8 +180,7 @@ export default function ExperienceSection() {
                             >
                               <span className="text-3xl">{getTypeIcon(exp.type)}</span>
                               <span className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r ${getTypeColor(exp.type)} text-white shadow-lg`}>
-                                {exp.type === 'fulltime' ? 'Full-Time' :
-                                 exp.type === 'internship' ? 'Internship' : 'Freelance'}
+                                {TYPE_LABELS[exp.type] ?? exp.type}
                               </span>
                             </motion.div>
                             
@@ -253,7 +257,7 @@ export default function ExperienceSection() {
                                   viewport={{ once: true }}
                                   transition={{ delay: 0.5 + idx * 0.05 }}
                                   whileHover={{ scale: 1.15, y: -3 }}
-                                  className={`px-3 py-1.5 rounded-full bg-gradient-to-r ${getTypeColor(exp.type)} bg-opacity-20 border border-white/20 text-white font-semibold text-xs backdrop-blur-sm hover:border-white/40 transition-all cursor-default`}
+                                  className={`px-3 py-1.5 rounded-full bg-gradient-to-r ${getTypeColor(exp.type)} bg-opacity-20 border border-white/20 text-white font-semibold text-xs hover:border-white/40 transition-all cursor-default`}
                                 >
                                   {tech}
                                 </motion.span>
@@ -267,17 +271,9 @@ export default function ExperienceSection() {
                         <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-white/5 to-transparent rounded-full blur-2xl" />
                         
                         {/* Particle effect */}
-                        <motion.div
-                          className={`absolute bottom-4 right-4 w-2 h-2 rounded-full bg-gradient-to-r ${getTypeColor(exp.type)}`}
-                          animate={{
-                            scale: [1, 1.5, 1],
-                            opacity: [0.5, 1, 0.5],
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: index * 0.3
-                          }}
+                        <span
+                          className={`anim-particle absolute bottom-4 right-4 w-2 h-2 rounded-full bg-gradient-to-r ${getTypeColor(exp.type)}`}
+                          style={{ animationDelay: `${index * 0.3}s` }}
                         />
                       </div>
                     </motion.div>
@@ -296,12 +292,7 @@ export default function ExperienceSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-24"
         >
-          {[
-            { icon: <Target size={32} />, value: `${experienceData.length}`, label: 'Roles', color: 'from-violet-500 to-purple-500' },
-            { icon: <Trophy size={32} />, value: '15+', label: 'Achievements', color: 'from-purple-500 to-fuchsia-500' },
-            { icon: <Rocket size={32} />, value: '25+', label: 'Projects', color: 'from-fuchsia-500 to-pink-500' },
-            { icon: <TrendingUp size={32} />, value: '100%', label: 'Success', color: 'from-pink-500 to-rose-500' },
-          ].map((stat, index) => (
+          {summaryStats.map((stat, index) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, scale: 0.5, rotateY: -90 }}
@@ -311,7 +302,7 @@ export default function ExperienceSection() {
               whileHover={{ scale: 1.08, y: -10 }}
               className="group relative"
             >
-              <div className="relative p-6 rounded-2xl bg-gradient-to-br from-dark-card/80 to-dark-card/40 backdrop-blur-xl border border-white/10 group-hover:border-white/30 overflow-hidden transition-all duration-500">
+              <div className="relative p-6 rounded-2xl bg-gradient-to-br from-dark-card to-dark-card/80 border border-white/10 group-hover:border-white/30 overflow-hidden transition-all duration-500">
                 {/* Glow effect */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl`} />
                 

@@ -1,38 +1,30 @@
 'use client';
 
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { GraduationCap, BookOpen, Award, Star, Calendar, MapPin, TrendingUp, Sparkles } from 'lucide-react';
 import { educations } from '@/utils/data/educations';
+import { useInViewportFlag } from '@/app/components/helper/use-in-viewport';
+
+const bottomStats = [
+  { icon: <GraduationCap size={32} />, value: '8.4', label: 'CGPA', color: 'from-orange-500 to-amber-500' },
+  { icon: <BookOpen size={32} />, value: '3', label: 'Degrees', color: 'from-amber-500 to-yellow-500' },
+  { icon: <Award size={32} />, value: '10+', label: 'Certifications', color: 'from-yellow-500 to-orange-500' },
+  { icon: <Sparkles size={32} />, value: 'AI', label: 'Specialization', color: 'from-rose-500 to-pink-500' },
+];
 
 export default function Education() {
+  // Parks this section's decorative CSS animations while it is off-screen.
+  const sectionRef = useInViewportFlag<HTMLElement>();
+
   return (
-    <section id="education" className="py-20 lg:py-32 relative overflow-hidden">
-      {/* Animated Background */}
+    <section ref={sectionRef} id="education" className="py-20 lg:py-32 relative overflow-hidden">
+      {/* Animated Background. These were framer-motion loops rotating a 384px
+          blur(64px) layer, which forces the browser to re-rasterize the blur on
+          every frame; the rotation of a radial blur is invisible anyway, so only
+          the scale pulse survives and it now runs on the compositor. */}
       <div className="absolute inset-0">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [90, 0, 90],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-rose-500/20 to-pink-500/20 rounded-full blur-3xl"
-        />
+        <div className="anim-blob absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-full blur-3xl" />
+        <div className="anim-blob-slow absolute bottom-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-rose-500/20 to-pink-500/20 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -52,18 +44,7 @@ export default function Education() {
             className="inline-block mb-8"
           >
             <div className="relative">
-              <motion.div
-                animate={{
-                  rotate: [0, 360],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 15,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="absolute inset-0 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 rounded-full blur-3xl opacity-50"
-              />
+              <div className="anim-blob-slow absolute inset-0 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 rounded-full blur-3xl opacity-50" />
               <GraduationCap className="relative text-amber-400" size={90} strokeWidth={1.5} />
             </div>
           </motion.div>
@@ -96,25 +77,14 @@ export default function Education() {
               <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
               
               {/* Main Card */}
-              <div className="relative h-full bg-gradient-to-br from-dark-card via-dark-card/95 to-dark-card/90 backdrop-blur-2xl border border-white/10 rounded-3xl overflow-hidden p-8 md:p-12">
+              <div className="relative h-full bg-gradient-to-br from-dark-card via-dark-card to-dark-card/90 border border-white/10 rounded-3xl overflow-hidden p-8 md:p-12">
                 {/* Top Gradient Bar */}
                 <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500" />
                 
                 {/* Floating Icon */}
-                <motion.div
-                  animate={{
-                    y: [0, -10, 0],
-                    rotate: [0, 5, -5, 0],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="absolute top-8 right-8 w-24 h-24 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-3xl flex items-center justify-center backdrop-blur-sm border border-white/10"
-                >
+                <div className="anim-float-bob absolute top-8 right-8 w-24 h-24 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-3xl flex items-center justify-center border border-white/10">
                   <GraduationCap className="text-amber-400" size={48} />
-                </motion.div>
+                </div>
 
                 {/* Content */}
                 <div className="relative z-10">
@@ -158,7 +128,7 @@ export default function Education() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.4 }}
-                      className="inline-flex items-center gap-4 p-6 rounded-2xl bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-500/30 backdrop-blur-sm"
+                      className="inline-flex items-center gap-4 p-6 rounded-2xl bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-500/30"
                     >
                       <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500">
                         <Award className="text-white" size={32} />
@@ -199,7 +169,7 @@ export default function Education() {
                 <div className="absolute inset-0 bg-gradient-to-r from-rose-500 to-pink-500 rounded-3xl blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
                 
                 {/* Card */}
-                <div className="relative h-full bg-gradient-to-br from-dark-card/80 to-dark-card/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden p-6">
+                <div className="relative h-full bg-gradient-to-br from-dark-card to-dark-card/80 border border-white/10 rounded-3xl overflow-hidden p-6">
                   {/* Top Gradient Bar */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-500 to-pink-500" />
                   
@@ -248,22 +218,11 @@ export default function Education() {
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-3xl blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
               
               {/* Card */}
-              <div className="relative h-full bg-gradient-to-br from-dark-card/80 to-dark-card/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden p-6 flex flex-col items-center justify-center text-center">
+              <div className="relative h-full bg-gradient-to-br from-dark-card to-dark-card/80 border border-white/10 rounded-3xl overflow-hidden p-6 flex flex-col items-center justify-center text-center">
                 {/* Animated Icon */}
-                <motion.div
-                  animate={{
-                    rotate: [0, 360],
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                  className="w-20 h-20 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-full flex items-center justify-center mb-4"
-                >
+                <div className="anim-spin-slow w-20 h-20 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-full flex items-center justify-center mb-4">
                   <TrendingUp className="text-yellow-400" size={40} />
-                </motion.div>
+                </div>
 
                 {/* Value */}
                 <p className="text-5xl font-black bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent mb-2">
@@ -287,12 +246,7 @@ export default function Education() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >
-          {[
-            { icon: <GraduationCap size={32} />, value: '8.4', label: 'CGPA', color: 'from-orange-500 to-amber-500' },
-            { icon: <BookOpen size={32} />, value: '3', label: 'Degrees', color: 'from-amber-500 to-yellow-500' },
-            { icon: <Award size={32} />, value: '10+', label: 'Certifications', color: 'from-yellow-500 to-orange-500' },
-            { icon: <Sparkles size={32} />, value: 'AI', label: 'Specialization', color: 'from-rose-500 to-pink-500' },
-          ].map((stat, index) => (
+          {bottomStats.map((stat, index) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, scale: 0.5, rotateY: -90 }}
@@ -302,7 +256,7 @@ export default function Education() {
               whileHover={{ scale: 1.05, y: -10 }}
               className="group relative"
             >
-              <div className="relative p-6 rounded-2xl bg-gradient-to-br from-dark-card/80 to-dark-card/40 backdrop-blur-xl border border-white/10 overflow-hidden">
+              <div className="relative p-6 rounded-2xl bg-gradient-to-br from-dark-card to-dark-card/80 border border-white/10 overflow-hidden">
                 {/* Glow effect */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl`} />
                 

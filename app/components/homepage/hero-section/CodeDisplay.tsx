@@ -1,15 +1,10 @@
 'use client';
 
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 
-export default function CodeDisplay() {
-  const codeLines = [
-    { type: 'keyword', content: 'const' },
-    { type: 'variable', content: ' developer' },
-    { type: 'operator', content: ' = ' },
-    { type: 'bracket', content: '{' },
-  ];
-
+// Entirely static markup — memo keeps it out of any future parent re-render.
+function CodeDisplay() {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -49,7 +44,7 @@ export default function CodeDisplay() {
             <span className="text-white">name:</span>
             <span className="text-gray-400 mx-1">&apos;</span>
             <span className="text-amber-300">Praneeth Vedagiri</span>
-            <span className="text-gray-400">',</span>
+            <span className="text-gray-400">&apos;,</span>
           </div>
 
           {/* Line 3 - Skills Array */}
@@ -59,39 +54,39 @@ export default function CodeDisplay() {
           </div>
           <div className="ml-12 space-y-1">
             <div>
-              <span className="text-gray-400">'</span>
+              <span className="text-gray-400">&apos;</span>
               <span className="text-amber-300">React.js</span>
-              <span className="text-gray-400">',</span>
+              <span className="text-gray-400">&apos;,</span>
             </div>
             <div>
-              <span className="text-gray-400">'</span>
+              <span className="text-gray-400">&apos;</span>
               <span className="text-amber-300">Next.js</span>
-              <span className="text-gray-400">',</span>
+              <span className="text-gray-400">&apos;,</span>
             </div>
             <div>
-              <span className="text-gray-400">'</span>
+              <span className="text-gray-400">&apos;</span>
               <span className="text-amber-300">Node.js</span>
-              <span className="text-gray-400">',</span>
+              <span className="text-gray-400">&apos;,</span>
             </div>
             <div>
-              <span className="text-gray-400">'</span>
+              <span className="text-gray-400">&apos;</span>
               <span className="text-amber-300">TypeScript</span>
-              <span className="text-gray-400">',</span>
+              <span className="text-gray-400">&apos;,</span>
             </div>
             <div>
-              <span className="text-gray-400">'</span>
+              <span className="text-gray-400">&apos;</span>
               <span className="text-amber-300">MongoDB</span>
-              <span className="text-gray-400">',</span>
+              <span className="text-gray-400">&apos;,</span>
             </div>
             <div>
-              <span className="text-gray-400">'</span>
+              <span className="text-gray-400">&apos;</span>
               <span className="text-amber-300">Mistral AI</span>
-              <span className="text-gray-400">',</span>
+              <span className="text-gray-400">&apos;,</span>
             </div>
             <div>
-              <span className="text-gray-400">'</span>
+              <span className="text-gray-400">&apos;</span>
               <span className="text-amber-300">LangChain</span>
-              <span className="text-gray-400">'</span>
+              <span className="text-gray-400">&apos;</span>
             </div>
           </div>
           <div className="ml-8">
@@ -176,3 +171,5 @@ export default function CodeDisplay() {
     </motion.div>
   );
 }
+
+export default memo(CodeDisplay);

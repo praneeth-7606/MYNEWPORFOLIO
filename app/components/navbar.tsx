@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -14,72 +14,113 @@ const navItems = [
   { label: "Contact", href: "/#contact" },
 ];
 
+// Sections tracked for the active-link underline. Page links (e.g. /freelancing)
+// have no corresponding element on the homepage and are skipped.
+const sectionIds = navItems
+  .filter((item) => item.href.startsWith("/#"))
+  .map((item) => item.href.slice(2));
+
+const NAV_OFFSET = 100; // fixed navbar height used as the "active" trigger line
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Scroll position drives derived booleans only, so it lives in a ref: writing it
+  // to state would re-render (and re-subscribe the listener) on every scroll event.
+  const lastScrollY = useRef(0);
+  const frameRequested = useRef(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Handle navbar visibility (hide on scroll down, show on scroll up)
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      setLastScrollY(currentScrollY);
+    // Reads window.scrollY only — no getBoundingClientRect, so no forced layout.
+    const update = () => {
+      frameRequested.current = false;
+      const y = window.scrollY;
+      const scrollingDown = y > lastScrollY.current;
+      lastScrollY.current = y;
 
-      // Handle background blur effect
-      setIsScrolled(currentScrollY > 50);
-
-      // Determine active section
-      const sections = navItems.map(item => item.href.replace('/#', ''));
-      let current = "";
-      
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            current = section;
-            break;
-          }
-        }
-      }
-      setActiveSection(current);
+      // Hide on scroll down, show on scroll up. Both setters bail out when the
+      // value is unchanged, so a full scroll costs only a handful of renders.
+      setIsVisible(!(scrollingDown && y > NAV_OFFSET));
+      setIsScrolled(y > 50);
     };
+
+    const handleScroll = () => {
+      if (frameRequested.current) return;
+      frameRequested.current = true;
+      requestAnimationFrame(update);
+    };
+
+    lastScrollY.current = window.scrollY;
+    update();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  // Active section via IntersectionObserver: the root is collapsed to a 1px band
+  // at y=NAV_OFFSET, so a section "activates" exactly when it crosses that line —
+  // same semantics as the old per-scroll rect check, but with zero scroll work.
+  useEffect(() => {
+    const intersecting = new Set<string>();
+    let observer: IntersectionObserver | null = null;
 
-  const handleNavClick = (href: string) => {
+    const connect = () => {
+      observer?.disconnect();
+      intersecting.clear();
+
+      const bottomMargin = Math.max(0, window.innerHeight - NAV_OFFSET - 1);
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) intersecting.add(entry.target.id);
+            else intersecting.delete(entry.target.id);
+          }
+          // Preserve document order precedence from the original loop.
+          const next = sectionIds.find((id) => intersecting.has(id)) ?? "";
+          setActiveSection((prev) => (prev === next ? prev : next));
+        },
+        { rootMargin: `-${NAV_OFFSET}px 0px -${bottomMargin}px 0px`, threshold: 0 }
+      );
+
+      for (const id of sectionIds) {
+        const element = document.getElementById(id);
+        if (element) observer.observe(element);
+      }
+    };
+
+    connect();
+    window.addEventListener("resize", connect);
+    return () => {
+      window.removeEventListener("resize", connect);
+      observer?.disconnect();
+    };
+  }, []);
+
+  const toggleMenu = useCallback(() => setIsOpen((open) => !open), []);
+
+  const handleNavClick = useCallback((href: string) => {
     setIsOpen(false);
-    
+
     // Check if it's an external page link
     if (!href.startsWith('/#')) {
       window.location.href = href;
       return;
     }
-    
+
     const element = document.querySelector(href);
     if (element) {
-      const offset = 80; // Height of fixed navbar
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      const offsetPosition = elementPosition + window.scrollY - 80;
 
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
       });
     }
-  };
+  }, []);
 
   return (
     <motion.nav

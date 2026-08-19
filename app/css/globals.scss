@@ -80,10 +80,15 @@ html {
   box-shadow: 0 10px 20px rgba(22, 242, 179, 0.2);
 }
 
-/* Button hover effects */
+/* Button hover effects. Scoped to box-shadow: the previous `transition: all`
+   made the browser watch every animatable property on every button in the page
+   (and, being declared inside :hover, never transitioned back out). */
+button {
+  transition: box-shadow 0.3s ease;
+}
+
 button:hover {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
 }
 
 /* Gradient text */
@@ -180,4 +185,128 @@ button:hover {
 
 .spinner {
   animation: spin 1s linear infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   Decorative animation utilities.
+
+   These replace per-element framer-motion `repeat: Infinity` loops. A CSS
+   animation over transform/opacity is handed to the compositor instead of being
+   driven by a JS rAF loop on the main thread, and — unlike a framer-motion
+   loop — it can be parked wholesale by the `[data-inview="false"]` rule below
+   whenever its section is scrolled out of view. The homepage previously kept
+   ~50 of these running permanently, including 32 skill-tile shimmers.
+   --------------------------------------------------------------------------- */
+
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(200%); }
+}
+
+.anim-shimmer {
+  animation: shimmer 2s linear infinite;
+  will-change: transform;
+}
+
+@keyframes blobPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.2); }
+}
+
+/* Large blurred background orbs. Rotation was dropped deliberately: a radially
+   blurred gradient circle looks identical at any angle, but rotating it forces
+   the browser to re-rasterize a 384px blur(64px) layer on every frame. */
+.anim-blob {
+  animation: blobPulse 20s ease-in-out infinite;
+}
+
+.anim-blob-slow {
+  animation: blobPulse 15s ease-in-out infinite reverse;
+}
+
+@keyframes particlePulse {
+  0%, 100% { transform: scale(1);   opacity: 0.5; }
+  50%      { transform: scale(1.5); opacity: 1; }
+}
+
+.anim-particle {
+  animation: particlePulse 2s ease-in-out infinite;
+}
+
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%      { transform: translateY(-10px) rotate(5deg); }
+  75%      { transform: translateY(-10px) rotate(-5deg); }
+}
+
+.anim-float-bob {
+  animation: floatBob 4s ease-in-out infinite;
+}
+
+/* Set by useInViewportFlag(). Parks every decorative animation inside a section
+   the moment it leaves the viewport, so scrolling past a section actually costs
+   nothing rather than leaving its loops ticking for the rest of the visit. */
+[data-inview="false"] * {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes spinPulse {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.anim-spin-slow {
+  animation: spinPulse 10s linear infinite;
+}
+
+@keyframes wiggle {
+  0%, 40%, 100% { transform: rotate(0deg) scale(1); }
+  10%           { transform: rotate(-10deg) scale(1.1); }
+  20%           { transform: rotate(10deg) scale(1); }
+  30%           { transform: rotate(-10deg) scale(1.1); }
+}
+
+.anim-wiggle {
+  animation: wiggle 5s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.1); }
+}
+
+.anim-badge-pulse {
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+/* Chat transcript scrollbar. Lived in a <style jsx global> block inside the chat
+   widget, which pulled the styled-jsx runtime into that chunk to emit four static
+   rules; as plain CSS it costs nothing at runtime. */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ec4899, #8b5cf6);
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #db2777, #7c3aed);
 }

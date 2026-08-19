@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Loader2 } from 'lucide-react';
-import { toast } from 'react-toastify';
+import { toast } from '@/lib/toast';
 
 interface FormData {
   name: string;
@@ -33,6 +33,20 @@ export default function ContactForm() {
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Functional updates: the previous `{...formData, x}` spread closed over a
+  // possibly-stale formData, so two updates in one tick would drop the first.
+  const handleFieldChange = useCallback(
+    (field: keyof FormData) => (
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+      const { value } = e.target;
+      setFormData((prev) => ({ ...prev, [field]: value }));
+      // Clear a field's error as soon as the user starts correcting it.
+      setErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));
+    },
+    []
+  );
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -99,14 +113,14 @@ export default function ContactForm() {
     }
   };
 
-  const toggleProjectType = (type: string) => {
+  const toggleProjectType = useCallback((type: string) => {
     setFormData((prev) => ({
       ...prev,
       projectType: prev.projectType.includes(type)
         ? prev.projectType.filter((t) => t !== type)
         : [...prev.projectType, type],
     }));
-  };
+  }, []);
 
   return (
     <div className="bg-[#0a0d37] border border-[#1b2c68a0] rounded-xl p-6 lg:p-8">
@@ -120,7 +134,7 @@ export default function ContactForm() {
             type="text"
             id="name"
             value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            onChange={handleFieldChange('name')}
             className={`w-full px-4 py-3 bg-[#1b2c68a0] border ${
               errors.name ? 'border-red-500' : 'border-[#1b2c68a0]'
             } rounded-lg text-white placeholder-gray-500 focus:border-[#16f2b3] focus:outline-none transition-colors`}
@@ -139,7 +153,7 @@ export default function ContactForm() {
               type="email"
               id="email"
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={handleFieldChange('email')}
               className={`w-full px-4 py-3 bg-[#1b2c68a0] border ${
                 errors.email ? 'border-red-500' : 'border-[#1b2c68a0]'
               } rounded-lg text-white placeholder-gray-500 focus:border-[#16f2b3] focus:outline-none transition-colors`}
@@ -156,7 +170,7 @@ export default function ContactForm() {
               type="tel"
               id="phone"
               value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              onChange={handleFieldChange('phone')}
               className="w-full px-4 py-3 bg-[#1b2c68a0] border border-[#1b2c68a0] rounded-lg text-white placeholder-gray-500 focus:border-[#16f2b3] focus:outline-none transition-colors"
               placeholder="+1 (555) 000-0000"
             />
@@ -195,7 +209,7 @@ export default function ContactForm() {
             id="message"
             rows={6}
             value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            onChange={handleFieldChange('message')}
             className={`w-full px-4 py-3 bg-[#1b2c68a0] border ${
               errors.message ? 'border-red-500' : 'border-[#1b2c68a0]'
             } rounded-lg text-white placeholder-gray-500 focus:border-[#16f2b3] focus:outline-none transition-colors resize-none`}

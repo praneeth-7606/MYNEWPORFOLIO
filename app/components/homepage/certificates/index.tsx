@@ -3,14 +3,27 @@
 import { motion } from 'framer-motion';
 import { Award, Calendar, Building2, Trophy, Users, Zap, Star, Sparkles } from 'lucide-react';
 import certificationsData from '@/data/certifications.json';
+import { useInViewportFlag } from '@/app/components/helper/use-in-viewport';
+
+// Split once at module scope. The source is a static JSON import, so re-deriving
+// these two arrays inside the component bought nothing but two array walks and a
+// pair of fresh identities per render.
+const hackathons = certificationsData.filter((cert) => cert.achievement);
+const otherCerts = certificationsData.filter((cert) => !cert.achievement);
+
+const summaryStats = [
+  { icon: Trophy, value: '2', label: 'Hackathon Wins', gradient: 'from-yellow-400 to-orange-500', color: 'text-yellow-400' },
+  { icon: Award, value: `${certificationsData.length}`, label: 'Total Certifications', gradient: 'from-cyan-500 to-teal-500', color: 'text-cyan-400' },
+  { icon: Users, value: '30+', label: 'Teams Competed', gradient: 'from-purple-500 to-pink-500', color: 'text-purple-400' },
+  { icon: Zap, value: '200+', label: 'DSA Problems', gradient: 'from-orange-500 to-red-500', color: 'text-orange-400' },
+];
 
 export default function Certificates() {
-  // Separate hackathons from other certifications
-  const hackathons = certificationsData.filter(cert => cert.achievement);
-  const otherCerts = certificationsData.filter(cert => !cert.achievement);
+  // Parks this section's decorative CSS animations while it is off-screen.
+  const sectionRef = useInViewportFlag<HTMLElement>();
 
   return (
-    <section id="certificates" className="py-20 lg:py-32 relative overflow-hidden">
+    <section ref={sectionRef} id="certificates" className="py-20 lg:py-32 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/5 to-transparent pointer-events-none" />
       <div className="absolute top-20 left-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse" />
@@ -82,20 +95,9 @@ export default function Certificates() {
 
                     {/* Winner Badge */}
                     <div className="absolute top-4 right-4">
-                      <motion.div
-                        animate={{ 
-                          rotate: [0, -10, 10, -10, 0],
-                          scale: [1, 1.1, 1, 1.1, 1]
-                        }}
-                        transition={{ 
-                          duration: 2,
-                          repeat: Infinity,
-                          repeatDelay: 3
-                        }}
-                        className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-2xl shadow-yellow-500/50"
-                      >
+                      <div className="anim-wiggle w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-2xl shadow-yellow-500/50">
                         <Trophy size={32} className="text-white" />
-                      </motion.div>
+                      </div>
                     </div>
 
                     {/* Content */}
@@ -158,17 +160,9 @@ export default function Certificates() {
                     </div>
 
                     {/* Floating Particles */}
-                    <motion.div
-                      className="absolute bottom-4 right-4 w-2 h-2 bg-yellow-400 rounded-full"
-                      animate={{
-                        scale: [1, 1.5, 1],
-                        opacity: [0.5, 1, 0.5],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.2
-                      }}
+                    <span
+                      className="anim-particle absolute bottom-4 right-4 w-2 h-2 bg-yellow-400 rounded-full"
+                      style={{ animationDelay: `${index * 0.2}s` }}
                     />
                   </div>
                 </motion.div>
@@ -263,12 +257,7 @@ export default function Certificates() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
         >
-          {[
-            { icon: Trophy, value: '2', label: 'Hackathon Wins', gradient: 'from-yellow-400 to-orange-500', color: 'text-yellow-400' },
-            { icon: Award, value: `${certificationsData.length}`, label: 'Total Certifications', gradient: 'from-cyan-500 to-teal-500', color: 'text-cyan-400' },
-            { icon: Users, value: '30+', label: 'Teams Competed', gradient: 'from-purple-500 to-pink-500', color: 'text-purple-400' },
-            { icon: Zap, value: '200+', label: 'DSA Problems', gradient: 'from-orange-500 to-red-500', color: 'text-orange-400' },
-          ].map((stat, index) => (
+          {summaryStats.map((stat, index) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, scale: 0.5 }}

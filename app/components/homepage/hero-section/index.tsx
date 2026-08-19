@@ -18,46 +18,65 @@ const specializations = [
   "Cloud AI Architect"
 ];
 
-export default function HeroSection() {
-  const [currentSpecialization, setCurrentSpecialization] = useState(0);
+// Hoisted to module scope: rebuilding these objects each render handed framer-motion
+// a new `variants` identity every time, forcing it to re-resolve the animation.
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+    },
+  },
+};
+
+const socialLinks = [
+  { icon: BsGithub, href: personalData.socialLinks.github, label: "GitHub" },
+  { icon: BsLinkedin, href: personalData.socialLinks.linkedin, label: "LinkedIn" },
+  { icon: FaFacebook, href: personalData.socialLinks.facebook, label: "Facebook" },
+  { icon: SiLeetcode, href: personalData.socialLinks.leetcode, label: "LeetCode" },
+  { icon: FaTwitterSquare, href: personalData.socialLinks.twitter, label: "Twitter" },
+];
+
+// The rotating job title owns its own interval and state. Kept out of HeroSection so
+// the 3s tick re-renders one <span> instead of the entire hero (CodeDisplay included).
+function RotatingSpecialization() {
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSpecialization((prev) => (prev + 1) % specializations.length);
+      setIndex((prev) => (prev + 1) % specializations.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
+  return (
+    <motion.span
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5 }}
+      className="text-transparent bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text"
+    >
+      {specializations[index]}
+    </motion.span>
+  );
+}
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
-
-  const socialLinks = [
-    { icon: BsGithub, href: personalData.socialLinks.github, label: "GitHub" },
-    { icon: BsLinkedin, href: personalData.socialLinks.linkedin, label: "LinkedIn" },
-    { icon: FaFacebook, href: personalData.socialLinks.facebook, label: "Facebook" },
-    { icon: SiLeetcode, href: personalData.socialLinks.leetcode, label: "LeetCode" },
-    { icon: FaTwitterSquare, href: personalData.socialLinks.twitter, label: "Twitter" },
-  ];
-
+export default function HeroSection() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center py-20 lg:py-0">
       <div className="w-full max-w-7xl mx-auto">
@@ -90,16 +109,7 @@ export default function HeroSection() {
             >
               <h2 className="text-2xl md:text-3xl font-semibold">
                 <span className="text-white">I&apos;m a </span>
-                <motion.span
-                  key={currentSpecialization}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-transparent bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text"
-                >
-                  {specializations[currentSpecialization]}
-                </motion.span>
+                <RotatingSpecialization />
               </h2>
             </motion.div>
 

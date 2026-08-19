@@ -5,35 +5,37 @@ import Image from 'next/image';
 import personalData from '@/data/personal.json';
 import { Award, Briefcase, Code2, GraduationCap, Rocket, Sparkles, Target, Trophy } from 'lucide-react';
 
+// Static content, hoisted out of the component so it is allocated once at module
+// load rather than rebuilt (with fresh array and object identities) per render.
+const stats = [
+  { icon: Trophy, value: '1st Prize', label: 'Hackathon Winner', color: 'from-yellow-400 to-orange-500' },
+  { icon: Code2, value: '200+', label: 'DSA Problems', color: 'from-blue-400 to-cyan-500' },
+  { icon: Rocket, value: '8+', label: 'Production Projects', color: 'from-purple-400 to-pink-500' },
+  { icon: GraduationCap, value: '8.3 GPA', label: 'Academic Excellence', color: 'from-green-400 to-emerald-500' },
+];
+
+const expertise = [
+  {
+    icon: Sparkles,
+    title: 'GenAI & LLM Integration',
+    description: 'Building production AI systems with RAG pipelines, multi-agent architectures, and semantic retrieval',
+    skills: ['LangChain', 'Mistral AI', 'RAG', 'OCR', 'NLP']
+  },
+  {
+    icon: Code2,
+    title: 'Full-Stack Development',
+    description: 'Architecting scalable web applications with modern frameworks and cloud-native solutions',
+    skills: ['React.js', 'FastAPI', 'Node.js', 'PostgreSQL', 'AWS']
+  },
+  {
+    icon: Target,
+    title: 'Healthcare & Finance AI',
+    description: 'Specialized in building AI-driven solutions for healthcare automation and financial analysis',
+    skills: ['Medical AI', 'OCR Systems', 'Data Processing', 'Compliance']
+  },
+];
+
 export default function AboutSection() {
-  const stats = [
-    { icon: Trophy, value: '1st Prize', label: 'Hackathon Winner', color: 'from-yellow-400 to-orange-500' },
-    { icon: Code2, value: '200+', label: 'DSA Problems', color: 'from-blue-400 to-cyan-500' },
-    { icon: Rocket, value: '8+', label: 'Production Projects', color: 'from-purple-400 to-pink-500' },
-    { icon: GraduationCap, value: '8.3 GPA', label: 'Academic Excellence', color: 'from-green-400 to-emerald-500' },
-  ];
-
-  const expertise = [
-    { 
-      icon: Sparkles, 
-      title: 'GenAI & LLM Integration', 
-      description: 'Building production AI systems with RAG pipelines, multi-agent architectures, and semantic retrieval',
-      skills: ['LangChain', 'Mistral AI', 'RAG', 'OCR', 'NLP']
-    },
-    { 
-      icon: Code2, 
-      title: 'Full-Stack Development', 
-      description: 'Architecting scalable web applications with modern frameworks and cloud-native solutions',
-      skills: ['React.js', 'FastAPI', 'Node.js', 'PostgreSQL', 'AWS']
-    },
-    { 
-      icon: Target, 
-      title: 'Healthcare & Finance AI', 
-      description: 'Specialized in building AI-driven solutions for healthcare automation and financial analysis',
-      skills: ['Medical AI', 'OCR Systems', 'Data Processing', 'Compliance']
-    },
-  ];
-
   return (
     <section id="about" className="py-20 lg:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none" />
@@ -87,6 +89,7 @@ export default function AboutSection() {
                       alt={personalData.name}
                       width={400}
                       height={400}
+                      sizes="(max-width: 1024px) 100vw, 400px"
                       className="object-cover w-full h-full"
                     />
                   </div>

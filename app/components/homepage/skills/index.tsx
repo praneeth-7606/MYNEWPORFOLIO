@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import skillsData from '@/data/skills.json';
 import { Skill, SkillCategory } from '@/data/types';
 import { Code2, Database, Brain, Cloud, Wrench, Palette, Server, Sparkles } from 'lucide-react';
 import { skillsImage } from '@/utils/skill-image';
 import Image from 'next/image';
+import { useInViewportFlag } from '@/app/components/helper/use-in-viewport';
 
 const categories: { id: SkillCategory | 'all'; label: string; icon: any }[] = [
   { id: 'all', label: 'All Skills', icon: Sparkles },
@@ -18,16 +19,28 @@ const categories: { id: SkillCategory | 'all'; label: string; icon: any }[] = [
   { id: 'tools', label: 'Tools', icon: Wrench },
 ];
 
+const stats = [
+  { icon: '🎯', value: `${skillsData.length}+`, label: 'Technologies', gradient: 'from-teal-500 to-cyan-500', delay: 0 },
+  { icon: '⏱️', value: '4+', label: 'Years Experience', gradient: 'from-cyan-500 to-sky-500', delay: 0.1 },
+  { icon: '🚀', value: '30+', label: 'Projects Completed', gradient: 'from-emerald-500 to-teal-500', delay: 0.2 },
+  { icon: '⭐', value: '100%', label: 'Client Satisfaction', gradient: 'from-sky-500 to-cyan-500', delay: 0.3 },
+];
+
 export default function SkillsSection() {
   const [selectedCategory, setSelectedCategory] = useState<SkillCategory | 'all'>('all');
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  // Parks this section's decorative CSS animations while it is off-screen.
+  const sectionRef = useInViewportFlag<HTMLElement>();
 
-  const filteredSkills = selectedCategory === 'all'
-    ? skillsData as Skill[]
-    : (skillsData as Skill[]).filter((skill: Skill) => skill.category === selectedCategory);
+  const filteredSkills = useMemo(
+    () =>
+      selectedCategory === 'all'
+        ? (skillsData as Skill[])
+        : (skillsData as Skill[]).filter((skill: Skill) => skill.category === selectedCategory),
+    [selectedCategory]
+  );
 
   return (
-    <section id="skills" className="py-20 lg:py-32 relative overflow-hidden">
+    <section ref={sectionRef} id="skills" className="py-20 lg:py-32 relative overflow-hidden">
       {/* Animated decorative elements */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
@@ -97,7 +110,7 @@ export default function SkillsSection() {
                 {/* Glow effect */}
                 {selectedCategory === category.id && (
                   <motion.div
-                    layoutId="activeCategory"
+                    layoutId="activeSkillCategory"
                     className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 blur-xl opacity-60"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
@@ -111,18 +124,7 @@ export default function SkillsSection() {
 
                 {/* Particle effect on active */}
                 {selectedCategory === category.id && (
-                  <motion.div
-                    className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full"
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [1, 0.5, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
+                  <span className="anim-particle absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full" />
                 )}
               </motion.button>
             );
@@ -140,136 +142,7 @@ export default function SkillsSection() {
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-20"
           >
             {filteredSkills.map((skill: Skill, index: number) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, scale: 0.5, rotateY: -90 }}
-                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                transition={{
-                  delay: index * 0.05,
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 15
-                }}
-                onHoverStart={() => setHoveredSkill(skill.name)}
-                onHoverEnd={() => setHoveredSkill(null)}
-                className="group relative"
-              >
-                {/* Card Container */}
-                <motion.div
-                  whileHover={{ y: -8, rotateY: 5 }}
-                  className="relative h-full p-6 rounded-3xl bg-gradient-to-br from-dark-card/90 to-dark-card/50 backdrop-blur-xl border border-teal-500/20 hover:border-cyan-500/60 transition-all duration-500 overflow-hidden [transform-style:preserve-3d]"
-                >
-                  {/* Animated gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-teal-500/0 via-cyan-500/0 to-emerald-500/0 group-hover:from-teal-500/10 group-hover:via-cyan-500/10 group-hover:to-emerald-500/10 transition-all duration-500" />
-
-                  {/* Glow effect on hover */}
-                  <motion.div
-                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 [background:radial-gradient(circle_at_center,rgba(6,182,212,0.15),transparent_70%)]"
-                  />
-
-                  {/* Animated corner accents */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-teal-500/20 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  {/* Content */}
-                  <div className="relative z-10 flex flex-col items-center text-center space-y-4">
-                    {/* Icon with 3D effect */}
-                    <motion.div
-                      whileHover={{ scale: 1.3, rotate: 360 }}
-                      transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                      className="relative w-20 h-20 flex items-center justify-center"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
-                      <div className="relative w-16 h-16">
-                        {skillsImage(skill.name) ? (
-                          <Image
-                            src={skillsImage(skill.name)}
-                            alt={skill.name}
-                            width={64}
-                            height={64}
-                            className="filter drop-shadow-lg"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-5xl filter drop-shadow-lg">
-                            💻
-                          </div>
-                        )}
-                      </div>
-                    </motion.div>
-
-                    {/* Name with gradient on hover */}
-                    <h3 className="text-sm font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-teal-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300">
-                      {skill.name}
-                    </h3>
-
-                    {/* Animated proficiency bar */}
-                    <div className="w-full space-y-2">
-                      <div className="relative h-2 bg-dark-bg/80 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.proficiency}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.5, delay: index * 0.05, ease: "easeOut" }}
-                          className="h-full bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 rounded-full relative"
-                        >
-                          {/* Shimmer effect */}
-                          <motion.div
-                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                            animate={{
-                              x: ['-100%', '200%'],
-                            }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              ease: "linear",
-                              delay: index * 0.1
-                            }}
-                          />
-                        </motion.div>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-xs text-gray-500 font-semibold">{skill.proficiency}%</span>
-                        <motion.span
-                          initial={{ opacity: 0, scale: 0 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          className="text-xs text-cyan-400 font-bold"
-                        >
-                          {skill.proficiency >= 90 ? '🔥' : skill.proficiency >= 75 ? '⭐' : '✨'}
-                        </motion.span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Hover tooltip with 3D effect */}
-                  <AnimatePresence>
-                    {hoveredSkill === skill.name && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.8 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                        className="absolute -top-28 left-1/2 transform -translate-x-1/2 z-30 px-5 py-3 bg-gradient-to-r from-dark-card to-dark-card/95 border border-cyan-500/50 rounded-2xl shadow-2xl shadow-cyan-500/20 backdrop-blur-xl whitespace-nowrap"
-                      >
-                        <div className="flex flex-col gap-2">
-                          <p className="text-sm font-bold text-white text-center border-b border-cyan-500/30 pb-2">
-                            {skill.name}
-                          </p>
-                          <div className="flex flex-col gap-1">
-                            <p className="text-xs text-cyan-400 font-bold">
-                              {skill.yearsOfExperience} years experience
-                            </p>
-                            <p className="text-xs text-emerald-400 font-bold">
-                              {skill.projectsCompleted} projects completed
-                            </p>
-                          </div>
-                        </div>
-                        {/* Arrow */}
-                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-3 h-3 bg-dark-card border-r border-b border-cyan-500/50" />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              </motion.div>
+              <SkillTile key={skill.name} skill={skill} index={index} />
             ))}
           </motion.div>
         </AnimatePresence>
@@ -282,12 +155,7 @@ export default function SkillsSection() {
           transition={{ duration: 0.8 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >
-          {[
-            { icon: '🎯', value: `${skillsData.length}+`, label: 'Technologies', gradient: 'from-teal-500 to-cyan-500', delay: 0 },
-            { icon: '⏱️', value: '4+', label: 'Years Experience', gradient: 'from-cyan-500 to-sky-500', delay: 0.1 },
-            { icon: '🚀', value: '30+', label: 'Projects Completed', gradient: 'from-emerald-500 to-teal-500', delay: 0.2 },
-            { icon: '⭐', value: '100%', label: 'Client Satisfaction', gradient: 'from-sky-500 to-cyan-500', delay: 0.3 },
-          ].map((stat, index) => (
+          {stats.map((stat) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, scale: 0.5, rotateX: -90 }}
@@ -298,7 +166,7 @@ export default function SkillsSection() {
               className="group relative"
             >
               {/* Card */}
-              <div className="relative p-8 rounded-3xl bg-gradient-to-br from-dark-card/90 to-dark-card/50 backdrop-blur-xl border border-teal-500/20 hover:border-cyan-500/60 transition-all duration-500 overflow-hidden">
+              <div className="relative p-8 rounded-3xl bg-gradient-to-br from-dark-card to-dark-card/80 border border-teal-500/20 hover:border-cyan-500/60 transition-all duration-500 overflow-hidden">
                 {/* Animated gradient border */}
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 <div className="absolute inset-[1px] rounded-3xl bg-dark-card" />
@@ -329,17 +197,9 @@ export default function SkillsSection() {
                 </div>
 
                 {/* Particle effects */}
-                <motion.div
-                  className="absolute top-2 right-2 w-2 h-2 bg-cyan-400 rounded-full"
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 1, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: stat.delay
-                  }}
+                <span
+                  className="anim-particle absolute top-2 right-2 w-2 h-2 bg-cyan-400 rounded-full"
+                  style={{ animationDelay: `${stat.delay}s` }}
                 />
               </div>
             </motion.div>
@@ -349,3 +209,144 @@ export default function SkillsSection() {
     </section>
   );
 }
+
+// Hover state lives here rather than in SkillsSection: hoisted, a single mouse-over
+// re-rendered every tile in the grid. memo keeps siblings still when one tile hovers.
+const SkillTile = memo(function SkillTile({ skill, index }: { skill: Skill; index: number }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleHoverStart = useCallback(() => setIsHovered(true), []);
+  const handleHoverEnd = useCallback(() => setIsHovered(false), []);
+
+  const iconSrc = skillsImage(skill.name);
+  // Capped: 32 tiles at 0.05s apart meant the last one only started animating
+  // 1.6s in, and every category switch replays the whole ladder.
+  const delay = Math.min(index, 10) * 0.04;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5, rotateY: -90 }}
+      animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+      transition={{
+        delay,
+        type: "spring",
+        stiffness: 200,
+        damping: 15
+      }}
+      onHoverStart={handleHoverStart}
+      onHoverEnd={handleHoverEnd}
+      className="group relative"
+    >
+      {/* Card Container */}
+      <motion.div
+        whileHover={{ y: -8, rotateY: 5 }}
+        className="relative h-full p-6 rounded-3xl bg-gradient-to-br from-dark-card to-dark-card/80 border border-teal-500/20 hover:border-cyan-500/60 transition-all duration-500 overflow-hidden [transform-style:preserve-3d]"
+      >
+        {/* Animated gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-500/0 via-cyan-500/0 to-emerald-500/0 group-hover:from-teal-500/10 group-hover:via-cyan-500/10 group-hover:to-emerald-500/10 transition-all duration-500" />
+
+        {/* Glow effect on hover */}
+        <motion.div
+          className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 [background:radial-gradient(circle_at_center,rgba(6,182,212,0.15),transparent_70%)]"
+        />
+
+        {/* Animated corner accents */}
+        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-teal-500/20 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+          {/* Icon with 3D effect */}
+          <motion.div
+            whileHover={{ scale: 1.3, rotate: 360 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="relative w-20 h-20 flex items-center justify-center"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
+            <div className="relative w-16 h-16">
+              {iconSrc ? (
+                <Image
+                  src={iconSrc}
+                  alt={skill.name}
+                  width={64}
+                  height={64}
+                  className="filter drop-shadow-lg"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-5xl filter drop-shadow-lg">
+                  💻
+                </div>
+              )}
+            </div>
+          </motion.div>
+
+          {/* Name with gradient on hover */}
+          <h3 className="text-sm font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-teal-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300">
+            {skill.name}
+          </h3>
+
+          {/* Animated proficiency bar */}
+          <div className="w-full space-y-2">
+            <div className="relative h-2 bg-dark-bg/80 rounded-full overflow-hidden">
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: `${skill.proficiency}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay, ease: "easeOut" }}
+                className="h-full bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 rounded-full relative overflow-hidden"
+              >
+                {/* Shimmer effect. CSS rather than framer-motion: this is the one
+                    animation that exists once per tile, so 32 rAF-driven loops
+                    ran permanently before — now they are compositor-driven and
+                    pause outright when the section scrolls out of view. */}
+                <span
+                  className="anim-shimmer absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                  style={{ animationDelay: `${(index % 10) * 0.1}s` }}
+                />
+              </motion.div>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-xs text-gray-500 font-semibold">{skill.proficiency}%</span>
+              <motion.span
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                className="text-xs text-cyan-400 font-bold"
+              >
+                {skill.proficiency >= 90 ? '🔥' : skill.proficiency >= 75 ? '⭐' : '✨'}
+              </motion.span>
+            </div>
+          </div>
+        </div>
+
+        {/* Hover tooltip with 3D effect */}
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div
+              initial={{ opacity: 0, y: 10, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.8 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="absolute -top-28 left-1/2 transform -translate-x-1/2 z-30 px-5 py-3 bg-gradient-to-r from-dark-card to-dark-card border border-cyan-500/50 rounded-2xl shadow-2xl shadow-cyan-500/20 whitespace-nowrap"
+            >
+              <div className="flex flex-col gap-2">
+                <p className="text-sm font-bold text-white text-center border-b border-cyan-500/30 pb-2">
+                  {skill.name}
+                </p>
+                <div className="flex flex-col gap-1">
+                  <p className="text-xs text-cyan-400 font-bold">
+                    {skill.yearsOfExperience} years experience
+                  </p>
+                  <p className="text-xs text-emerald-400 font-bold">
+                    {skill.projectsCompleted} projects completed
+                  </p>
+                </div>
+              </div>
+              {/* Arrow */}
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-3 h-3 bg-dark-card border-r border-b border-cyan-500/50" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </motion.div>
+  );
+});

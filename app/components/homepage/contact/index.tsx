@@ -5,28 +5,29 @@ import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react';
 import personalData from '@/data/personal.json';
 import ContactForm from './ContactForm';
 
-export default function ContactSection() {
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: 'Email',
-      value: personalData.email,
-      href: `mailto:${personalData.email}`,
-    },
-    {
-      icon: Phone,
-      label: 'Phone',
-      value: personalData.phone,
-      href: `tel:${personalData.phone}`,
-    },
-    {
-      icon: MapPin,
-      label: 'Location',
-      value: personalData.location,
-      href: null,
-    },
-  ];
+// Built from a static JSON import, so it is assembled once at module load.
+const contactInfo = [
+  {
+    icon: Mail,
+    label: 'Email',
+    value: personalData.email,
+    href: `mailto:${personalData.email}`,
+  },
+  {
+    icon: Phone,
+    label: 'Phone',
+    value: personalData.phone,
+    href: `tel:${personalData.phone}`,
+  },
+  {
+    icon: MapPin,
+    label: 'Location',
+    value: personalData.location,
+    href: null as string | null,
+  },
+];
 
+export default function ContactSection() {
   return (
     <section id="contact" className="py-20 lg:py-32">
       <div className="max-w-7xl mx-auto">
