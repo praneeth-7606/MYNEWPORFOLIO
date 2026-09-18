@@ -2,6 +2,8 @@
 
 A modern, interactive portfolio website built with Next.js, featuring an intelligent AI chatbot powered by Google Gemini, RAG (Retrieval-Augmented Generation), and GitHub MCP integration.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-mynewporfolio.vercel.app-brightgreen?style=for-the-badge)](https://mynewporfolio.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/praneeth-7606/MYNEWPORFOLIO)
 ![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-18.2-blue?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
