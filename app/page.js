@@ -10,17 +10,19 @@ import Skills from "./components/homepage/skills";
 import Certificates from "./components/homepage/certificates";
 
 async function getData() {
-  const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
+  try {
+    const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`, { next: { revalidate: 3600 } })
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
+    if (!res.ok) {
+      return []
+    }
+
+    const data = await res.json();
+
+    return data.filter((item) => item?.cover_image).sort(() => Math.random() - 0.5);
+  } catch {
+    return []
   }
-
-  const data = await res.json();
-
-  const filtered = data.filter((item) => item?.cover_image).sort(() => Math.random() - 0.5);
-
-  return filtered;
 };
 
 export default async function Home() {

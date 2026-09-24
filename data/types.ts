@@ -23,7 +23,7 @@ export interface PersonalData {
   profile: string;
 }
 
-export type ProjectCategory = 'fullstack' | 'genai' | 'ecommerce' | 'api' | 'mobile';
+export type ProjectCategory = 'fullstack' | 'genai' | 'ecommerce' | 'api' | 'backend' | 'mobile';
 
 export interface ProjectMetric {
   label: string;

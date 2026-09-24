@@ -122,8 +122,8 @@
     "images": [
       "/png/placeholder.png"
     ],
-    "liveUrl": "",
-    "githubUrl": "https://github.com/praneeth-7606",
+    "liveUrl": "https://bank-statement-analyzer-two.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606/Complete_Bank_Statement_Code",
     "videoUrl": "",
     "demoType": "images",
     "architecture": "React → FastAPI → MongoDB → ChromaDB → Hugging Face Transformers",
@@ -403,8 +403,8 @@
     "images": [
       "/image/crefin.jpg"
     ],
-    "liveUrl": "",
-    "githubUrl": "https://github.com/praneeth-7606",
+    "liveUrl": "https://job-frontend-five.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606/job_frontend",
     "videoUrl": "",
     "demoType": "images",
     "year": "2024"
@@ -462,8 +462,8 @@
     "images": [
       "/png/placeholder.png"
     ],
-    "liveUrl": "",
-    "githubUrl": "https://github.com/praneeth-7606",
+    "liveUrl": "https://management-server-mu.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606/management_server",
     "videoUrl": "",
     "demoType": "images",
     "year": "2024"
@@ -522,8 +522,8 @@
     "images": [
       "/png/placeholder.png"
     ],
-    "liveUrl": "https://praneeth-portfolio.vercel.app",
-    "githubUrl": "https://github.com/praneeth-7606",
+    "liveUrl": "https://mynewporfolio.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606/MYNEWPORFOLIO",
     "videoUrl": "",
     "demoType": "images",
     "architecture": "Next.js → LangChain Agent → Gemini LLM → Pinecone Vector DB → GitHub API",
@@ -536,6 +536,126 @@
         "GitHub API"
       ]
     },
+    "year": "2025"
+  },
+  {
+    "id": "equityintelligence",
+    "title": "Equity Intelligence",
+    "date": "2026",
+    "status": "Live",
+    "description": "AI-driven equity market intelligence platform for analysis and insights on stocks and market trends.",
+    "longDescription": "Full-stack equity intelligence application that surfaces market data, analytics, and AI-assisted insights to help users make informed investment decisions. Deployed on Vercel with a modern React frontend.",
+    "category": [
+      "genai",
+      "fullstack"
+    ],
+    "techStack": [
+      "React.js",
+      "JavaScript",
+      "AI APIs",
+      "Vercel"
+    ],
+    "features": [
+      "Equity market data visualization",
+      "AI-assisted investment insights",
+      "Responsive analytics dashboard",
+      "Production deployment on Vercel"
+    ],
+    "images": [
+      "/png/placeholder.png"
+    ],
+    "liveUrl": "https://equityintelligence.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606/EQUITYINTELLIGENCE",
+    "videoUrl": "",
+    "demoType": "live",
+    "year": "2026"
+  },
+  {
+    "id": "estatepulse-ai",
+    "title": "EstatePulse AI",
+    "date": "2026",
+    "status": "Live",
+    "description": "AI-powered real estate intelligence platform delivering property insights and pulse analytics.",
+    "longDescription": "Real estate analytics platform combining property data with AI-driven recommendations. Built for fast iteration and deployed as a production Vercel application.",
+    "category": [
+      "genai",
+      "fullstack"
+    ],
+    "techStack": [
+      "React.js",
+      "AI APIs",
+      "Vercel"
+    ],
+    "features": [
+      "Property intelligence dashboard",
+      "AI-driven recommendations",
+      "Production deployment on Vercel"
+    ],
+    "images": [
+      "/png/placeholder.png"
+    ],
+    "liveUrl": "https://estatepulse-ai-alpha.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606/HACKTHON_TWO",
+    "videoUrl": "",
+    "demoType": "live",
+    "year": "2026"
+  },
+  {
+    "id": "health-report",
+    "title": "Health Report",
+    "date": "2025",
+    "status": "Live",
+    "description": "Health reporting application for generating and viewing structured health reports with a clean UI.",
+    "longDescription": "Full-stack health report application deployed on Vercel. Provides structured report generation and a responsive interface for viewing results.",
+    "category": [
+      "fullstack"
+    ],
+    "techStack": [
+      "React.js",
+      "JavaScript",
+      "Vercel"
+    ],
+    "features": [
+      "Structured health report views",
+      "Responsive UI",
+      "Production deployment on Vercel"
+    ],
+    "images": [
+      "/png/placeholder.png"
+    ],
+    "liveUrl": "https://health-report-drab-eta.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606/HEALTH_REPORT",
+    "videoUrl": "",
+    "demoType": "live",
+    "year": "2025"
+  },
+  {
+    "id": "whatsapp-clone",
+    "title": "WhatsApp Application",
+    "date": "2025",
+    "status": "Live",
+    "description": "WhatsApp-style messaging application clone with real-time chat UI, built with modern TypeScript tooling.",
+    "longDescription": "Messaging application inspired by WhatsApp, featuring chat interfaces and conversation flows. Frontend deployed on Vercel.",
+    "category": [
+      "fullstack"
+    ],
+    "techStack": [
+      "TypeScript",
+      "React.js",
+      "Vercel"
+    ],
+    "features": [
+      "Chat-style messaging UI",
+      "Conversation management",
+      "Production deployment on Vercel"
+    ],
+    "images": [
+      "/png/placeholder.png"
+    ],
+    "liveUrl": "https://whatsup-application.vercel.app",
+    "githubUrl": "https://github.com/praneeth-7606/whatsup_application",
+    "videoUrl": "",
+    "demoType": "live",
     "year": "2025"
   }
 ]
