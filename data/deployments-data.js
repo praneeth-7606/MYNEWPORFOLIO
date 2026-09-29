@@ -245,10 +245,10 @@ export const deploymentsData = [
     ],
   },
   {
-    repo: "estatepulse-ai",
-    repoUrl: "",
-    info: "Real-estate AI application — source not linked to GitHub.",
-    tech: ["Web App"],
+    repo: "HACKTHON_TWO",
+    repoUrl: "https://github.com/praneeth-7606/HACKTHON_TWO",
+    info: "EstatePulse AI — AI-powered real estate lead management system (VoidHack 2026, MERN + Gemini).",
+    tech: ["React", "Vite", "MERN", "Gemini AI"],
     deployments: [
       { name: "estatepulse-ai", url: "https://estatepulse-ai-alpha.vercel.app" },
     ],
