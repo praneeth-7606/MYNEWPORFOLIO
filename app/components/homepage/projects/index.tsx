@@ -156,7 +156,15 @@ export default function ProjectsSection() {
                     <div className={`absolute -inset-1 bg-gradient-to-r ${gradient} rounded-3xl blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500`} />
 
                     {/* Card */}
-                    <div className="relative h-full bg-gradient-to-br from-[#0a0d37] to-[#1a1f4a] rounded-3xl p-8 border border-[#1b2c68a0] hover:border-purple-500/50 transition-all duration-500 overflow-hidden">
+                    <div
+                      onClick={(e) => {
+                        // Ignore clicks that landed on the inner GitHub link or
+                        // "View Details" button so they keep their own handlers.
+                        if ((e.target as HTMLElement).closest("a, button")) return;
+                        setSelectedProject(project);
+                      }}
+                      className="relative h-full bg-gradient-to-br from-[#0a0d37] to-[#1a1f4a] rounded-3xl p-8 border border-[#1b2c68a0] hover:border-purple-500/50 transition-all duration-500 overflow-hidden cursor-pointer"
+                    >
                       {/* Background Pattern */}
                       <div className="absolute inset-0 opacity-5">
                         <div className={`absolute inset-0 bg-gradient-to-br ${gradient}`} />
@@ -302,7 +310,14 @@ export default function ProjectsSection() {
                     <div className={`absolute -inset-0.5 bg-gradient-to-r ${gradient} rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
 
                     {/* Card */}
-                    <div className="relative h-full bg-[#0a0d37] border border-[#1b2c68a0] rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+                    <div
+                      onClick={(e) => {
+                        // Ignore clicks on inner links/buttons so they keep their own handlers.
+                        if ((e.target as HTMLElement).closest("a, button")) return;
+                        setSelectedProject(project);
+                      }}
+                      className="relative h-full bg-[#0a0d37] border border-[#1b2c68a0] rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300 cursor-pointer"
+                    >
                       {/* Icon */}
                       <motion.div
                         whileHover={{ scale: 1.2, rotate: 360 }}

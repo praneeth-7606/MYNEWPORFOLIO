@@ -69,7 +69,10 @@ export default function Navbar() {
       return;
     }
     
-    const element = document.querySelector(href);
+    // "/#projects" -> "#projects". querySelector("/#projects") is an invalid
+    // selector and throws, which silently killed every in-page nav click.
+    const target = href.slice(1);
+    const element = document.querySelector<HTMLElement>(target);
     if (element) {
       const offset = 80; // Height of fixed navbar
       const elementPosition = element.getBoundingClientRect().top;
@@ -79,6 +82,13 @@ export default function Navbar() {
         top: offsetPosition,
         behavior: "smooth"
       });
+
+      // Keep the URL hash shareable/deep-linkable.
+      window.history.replaceState(null, "", href);
+    } else {
+      // Section not present on this page (e.g. clicked from /freelancing):
+      // navigate so the browser can jump to the anchor after load.
+      window.location.href = href;
     }
   };
 
