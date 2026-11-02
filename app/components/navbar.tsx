@@ -105,21 +105,33 @@ export default function Navbar() {
     setIsOpen(false);
 
     // Check if it's an external page link
-    if (!href.startsWith('/#')) {
+    if (!href.startsWith("/#")) {
       window.location.href = href;
       return;
     }
 
-    const element = document.querySelector(href);
+    // "/#projects" -> "#projects". querySelector("/#projects") is an invalid
+    // selector and throws, which silently killed every in-page nav click.
+    const target = href.slice(1);
+    const element = document.querySelector<HTMLElement>(target);
+
     if (element) {
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - 80;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
+
+      // Keep the URL hash shareable/deep-linkable.
+      window.history.replaceState(null, "", href);
+      return;
     }
+
+    // Section not present on this page (e.g. clicked from /freelancing):
+    // navigate so the browser can jump to the anchor after load.
+    window.location.href = href;
   }, []);
 
   return (
